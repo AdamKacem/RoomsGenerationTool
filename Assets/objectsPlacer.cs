@@ -1,0 +1,71 @@
+using UnityEngine;
+
+public class objectsPlacer : MonoBehaviour
+{
+    public GameObject CenterObject;
+    public GameObject BedObject;
+
+
+
+    public int a, b;
+    float houseWidth, houseHeight;
+    int gridWidth, gridHeight;
+    public float cellSize=1.0f;
+    CenterClass Center;
+    float originX, originZ;
+    RoomGrid room;
+    void Start()
+    {
+        Center = CenterObject.GetComponent<CenterClass>();
+
+        houseWidth =  Center.houseWidth;
+        houseHeight =  Center.houseHeight;
+
+        room = new RoomGrid(houseWidth, houseHeight,cellSize,Center.transform.position);
+
+        //PlaceObject(BedObject, occupied);
+        
+       PlaceObjectManually(BedObject, room ,a,b);
+
+    }
+
+    void PlaceObject(GameObject ob, RoomGrid room)
+    {
+        Vector2Int coords = room.PlaceInRandomFreeCell();
+        int x = coords.x;
+        int z = coords.y;
+       
+        Vector3 position = room.GetWorldPosition(x, z);
+        
+        float randomAngle = Random.value<0.5f ? 90f : 0f;
+
+        Instantiate(ob, position, Quaternion.Euler(0,randomAngle,0));
+
+    }
+
+    void PlaceObjectManually(GameObject ob, RoomGrid room,int x,int z)
+    {
+
+
+        Vector3 position = room.GetWorldPosition(x, z);
+
+        float randomAngle = Random.value < 0.5f ? 90f : 0f;
+
+        Instantiate(ob, position, Quaternion.Euler(0, randomAngle, 0));
+
+
+    }
+
+    /*
+    void OnDrawGizmos()
+    {
+        
+        room.DrawGizmos();
+    }
+*/
+
+
+
+
+
+}
