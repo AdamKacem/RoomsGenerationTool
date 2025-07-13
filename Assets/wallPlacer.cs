@@ -5,35 +5,72 @@ public class wallPlacer : MonoBehaviour
   
     public GameObject wall;
     public GameObject CenterObject;
+    public GameObject roomObject;
+    public RoomGrid room;
+    
 
-   float houseWidth, houseHeight;
+    
 
-    const float WALLHEIGHT = 9;
-    const float WALLDEPTH = 2;
+   
 
-    float originX, originZ;
+    
     void Start()
     {
-        CenterClass Center = CenterObject.GetComponent<CenterClass>();
-        houseWidth = Center.houseWidth;
-        houseHeight = Center.houseHeight;
+        room = roomObject.GetComponent<RoomGridObject>().room;
 
-        if (houseWidth < 10 || houseHeight < 10)
-        {
-            Debug.Log("Can't place walls ! (minimum size is 10x10)");
-            return;
-        }
+        
 
-    Quaternion rotation90 = Quaternion.Euler(0f, 90f, 0f);
-    Quaternion rotationM90 = Quaternion.Euler(0f, -90f, 0f);
-    Quaternion rotation180 = Quaternion.Euler(0f, 180f, 0f);
+
+        Vector3 origin = room.origin;
+        Quaternion rotation90 = Quaternion.Euler(0f, 90f, 0f);
+        Quaternion rotationM90 = Quaternion.Euler(0f, -90f, 0f);
+        Quaternion rotation180 = Quaternion.Euler(0f, 180f, 0f);
 
         //instantiating walls
-        GameObject width1 =  Instantiate(wall,Center.transform.position,rotation180);
-    GameObject width2 =  Instantiate(wall,Center.transform.position, Quaternion.identity);
 
-    GameObject height1 =  Instantiate(wall,Center.transform.position, rotationM90);
-    GameObject height2 =  Instantiate(wall,Center.transform.position, rotation90);
+        //GameObject width1 =  Instantiate(wall,origin,rotation180);
+        Vector3 widthPos = new(1f, 0, -1f);
+        Vector3 heightPos = new(-1f, 0, 1f);
+
+        widthPos += origin;
+        heightPos += origin;
+        Vector3 zTranslator = new Vector3(0,0, room.gridWidth + 2);
+        Vector3 xTranslator = new Vector3(room.gridWidth + 2,0, 0);
+
+        for (int i = 0; i < ((room.gridHeight+2)/4); i++)
+        {
+            Instantiate(wall, widthPos, Quaternion.identity);
+            Instantiate(wall, widthPos + zTranslator, rotation180);
+            widthPos += new Vector3(4, 0, 0);
+
+
+            
+
+
+
+
+        } 
+        for (int i = 0; i < ((room.gridWidth+2)/4); i++)
+        {
+            
+            Instantiate(wall, heightPos, rotation90);
+            Instantiate(wall, heightPos+xTranslator, rotationM90);
+           
+            heightPos += new Vector3(0, 0, 4);
+            
+            
+
+        }
+
+
+
+
+
+    //GameObject height1 =  
+    //GameObject height2 =  Instantiate(wall, origin , rotation90);
+    
+
+
 
 
         //dimensions for each wall
@@ -49,12 +86,12 @@ public class wallPlacer : MonoBehaviour
 */
 
         //position of each wall:
-        
-    width1.transform.position = new Vector3(Center.transform.position.x,Center.transform.position.y ,Center.transform.position.z+ houseHeight/2 + 0.5f);
-    width2.transform.position = new Vector3(Center.transform.position.x, Center.transform.position.y , Center.transform.position.z- houseHeight / 2 - 1.5f);
+        /*
+    width1.transform.position = new Vector3(.x,.y ,.z+ houseHeight/2 + 0.5f);
+    width2.transform.position = new Vector3(.x, .y , .z- houseHeight / 2 - 1.5f);
 
-    height1.transform.position = new Vector3(Center.transform.position.x + houseWidth/2+1, Center.transform.position.y, Center.transform.position.z);
-    height2.transform.position = new Vector3(Center.transform.position.x - houseWidth / 2-1, Center.transform.position.y, Center.transform.position.z);
+    height1.transform.position = new Vector3(.x + houseWidth/2+1, .y, .z);
+    height2.transform.position = new Vector3(.x - houseWidth / 2-1, .y, .z);*/
 
 
         //el house area heya:

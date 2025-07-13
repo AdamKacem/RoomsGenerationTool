@@ -15,6 +15,7 @@ public class RoomGrid
         gridHeight = Mathf.FloorToInt(houseHeight / cellSize);
 
         origin = center - new Vector3(gridWidth / 2f, 0, gridHeight / 2f);
+        
         occupied = new bool[gridWidth, gridHeight];
     }
 
@@ -55,17 +56,6 @@ public class RoomGrid
         return new Vector2Int(x, z);
     }
 
-    public void DrawGizmos()
-    {
-        Gizmos.color = Color.green;
-        for (int x = 0; x < gridWidth; x++)
-        {
-            for (int z = 0; z < gridHeight; z++)
-            {
-                Vector3 center = GetWorldPosition(x, z);
-                Vector3 size = new Vector3(cellSize, 0, cellSize);
-                Gizmos.DrawWireCube(center, size);
-            }
-        }
-    }
+   
+
 }

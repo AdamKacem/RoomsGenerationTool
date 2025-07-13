@@ -2,30 +2,24 @@ using UnityEngine;
 
 public class objectsPlacer : MonoBehaviour
 {
-    public GameObject CenterObject;
+    
     public GameObject BedObject;
 
-
+    public GameObject roomObject;
 
     public int a, b;
-    float houseWidth, houseHeight;
-    int gridWidth, gridHeight;
-    public float cellSize=1.0f;
-    CenterClass Center;
-    float originX, originZ;
+    
     RoomGrid room;
     void Start()
     {
-        Center = CenterObject.GetComponent<CenterClass>();
+       
+        room = roomObject.GetComponent<RoomGridObject>().room;
+        
 
-        houseWidth =  Center.houseWidth;
-        houseHeight =  Center.houseHeight;
-
-        room = new RoomGrid(houseWidth, houseHeight,cellSize,Center.transform.position);
 
         //PlaceObject(BedObject, occupied);
-        
-       PlaceObjectManually(BedObject, room ,a,b);
+
+        PlaceObjectManually(BedObject, room ,a,b);
 
     }
 
@@ -56,13 +50,8 @@ public class objectsPlacer : MonoBehaviour
 
     }
 
-    /*
-    void OnDrawGizmos()
-    {
-        
-        room.DrawGizmos();
-    }
-*/
+    
+    
 
 
 
