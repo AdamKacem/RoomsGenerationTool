@@ -494,6 +494,9 @@ MonoBehaviour:
   wall: {fileID: 7779381877309823848, guid: 2f6c4572e07a60b43b00e1c4f489a806, type: 3}
   CenterObject: {fileID: 2004964217}
   roomObject: {fileID: 1225951817}
+  wall25: {fileID: 5413404963415038210, guid: 28e02a7ebae78d74c9d02e7ab6cada3b, type: 3}
+  wall5: {fileID: 4827148807295930782, guid: e8471b2f01d7e084ab4fdb8d488ed049, type: 3}
+  wall75: {fileID: 739678263756247340, guid: 5045041e282ca3343a0b0ade1dea67be, type: 3}
 --- !u!4 &1122108459
 Transform:
   m_ObjectHideFlags: 0
@@ -598,8 +601,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 156ae0d2b8370624f841b2239e346444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  houseWidth: 11
-  houseHeight: 11
+  houseWidth: 13
+  houseHeight: 17
   cellSize: 1
   RoomObject: {fileID: 1225951817}
 --- !u!1 &1825103167
