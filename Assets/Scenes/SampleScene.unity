@@ -492,7 +492,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wall: {fileID: 7779381877309823848, guid: 2f6c4572e07a60b43b00e1c4f489a806, type: 3}
-  CenterObject: {fileID: 2004964217}
   roomObject: {fileID: 1225951817}
   wall25: {fileID: 5413404963415038210, guid: 28e02a7ebae78d74c9d02e7ab6cada3b, type: 3}
   wall5: {fileID: 4827148807295930782, guid: e8471b2f01d7e084ab4fdb8d488ed049, type: 3}
@@ -601,8 +600,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 156ae0d2b8370624f841b2239e346444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  houseWidth: 13
-  houseHeight: 17
+  houseWidth: 12
+  houseHeight: 12
   cellSize: 1
   RoomObject: {fileID: 1225951817}
 --- !u!1 &1825103167
@@ -634,10 +633,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1469113b53aebcf4cb787c2e034d9ab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BedObject: {fileID: 907737577407192764, guid: 3c94a574020d3de429d0c295b3a83db4, type: 3}
+  Chair: {fileID: 11400000, guid: 7a373c5d0df7a8a43a06f1076ad32a3b, type: 2}
+  TableChair: {fileID: 11400000, guid: c4b1788e09748264f893a6c8d8f30617, type: 2}
   roomObject: {fileID: 1225951817}
-  a: 0
-  b: 0
+  a: 1
+  b: 1
 --- !u!4 &1825103169
 Transform:
   m_ObjectHideFlags: 0

@@ -58,6 +58,21 @@ public class RoomGrid
         return new Vector2Int(x, z);
     }
 
-   
+    public Vector2Int GetRandomFreeCell()
+    {
+        int x, z;
+        do
+        {
+            x = Random.Range(0, gridWidth);
+            z = Random.Range(0, gridHeight);
+        } while (occupied[x, z]);
+        
+        return new Vector2Int(x, z);
+    }
+
+ public bool InBounds(int x, int z)
+    {
+        return x >= 0 && z >= 0 && x < gridWidth && z < gridWidth;
+    }  
 
 }
