@@ -17,13 +17,13 @@ public class objectsPlacer : MonoBehaviour
         
 
 
-        //PlaceObject(BedObject, occupied);
+        PlaceObject(BedObject, room);
 
-        PlaceObjectManually(BedObject, room ,a,b);
+        //PlaceObjectManually(BedObject, room ,a,b);
 
     }
 
-    void PlaceObject(GameObject ob, RoomGrid room)
+    void PlaceObject(GameObject obj, RoomGrid room)
     {
         Vector2Int coords = room.PlaceInRandomFreeCell();
         int x = coords.x;
@@ -33,11 +33,11 @@ public class objectsPlacer : MonoBehaviour
         
         float randomAngle = Random.value<0.5f ? 90f : 0f;
 
-        Instantiate(ob, position, Quaternion.Euler(0,randomAngle,0));
+        Instantiate(obj, position, Quaternion.Euler(0,randomAngle,0));
 
     }
 
-    void PlaceObjectManually(GameObject ob, RoomGrid room,int x,int z)
+    void PlaceObjectManually(GameObject obj, RoomGrid room,int x,int z)
     {
 
 
@@ -45,7 +45,7 @@ public class objectsPlacer : MonoBehaviour
 
         float randomAngle = Random.value < 0.5f ? 90f : 0f;
 
-        Instantiate(ob, position, Quaternion.Euler(0, randomAngle, 0));
+        Instantiate(obj, position, Quaternion.Euler(0, randomAngle, 0));
 
 
     }
