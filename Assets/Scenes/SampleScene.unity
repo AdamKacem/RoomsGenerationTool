@@ -600,8 +600,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 156ae0d2b8370624f841b2239e346444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  houseWidth: 12
-  houseHeight: 12
+  houseWidth: 7
+  houseHeight: 7
   cellSize: 1
   RoomObject: {fileID: 1225951817}
 --- !u!1 &1825103167
@@ -635,6 +635,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Chair: {fileID: 11400000, guid: 7a373c5d0df7a8a43a06f1076ad32a3b, type: 2}
   TableChair: {fileID: 11400000, guid: c4b1788e09748264f893a6c8d8f30617, type: 2}
+  Pot: {fileID: 11400000, guid: 6452f3764f7eb3646968e56122f59dc3, type: 2}
+  Pillar: {fileID: 11400000, guid: 34fe9c807382c7f44ad8d27ad8551022, type: 2}
   roomObject: {fileID: 1225951817}
   a: 1
   b: 1

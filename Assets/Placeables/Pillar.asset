@@ -10,17 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fea936449ec00a44f81be0b805e99020, type: 3}
-  m_Name: TableChair
+  m_Name: Pillar
   m_EditorClassIdentifier: 
-  prefab: {fileID: 7727206508739052598, guid: f6668723e908cd04e964c45a0226842d, type: 3}
+  prefab: {fileID: 3713104444964819695, guid: 2f3f7d4927009b84583c02fcbc509217, type: 3}
   shape:
   - {x: 0, y: 0}
-  - {x: 0, y: 1}
-  - {x: 1, y: 0}
-  - {x: 1, y: 1}
-  - {x: 0, y: -1}
-  - {x: -1, y: 0}
-  - {x: -1, y: -1}
-  - {x: -1, y: 1}
-  - {x: 1, y: -1}
   canRotate: 1
+  offset: {x: 0, y: 0, z: 0}

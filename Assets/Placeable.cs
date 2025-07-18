@@ -14,6 +14,8 @@ public class Placeable : ScriptableObject
     
     public bool canRotate = true;
 
+    public Vector3 offset; //offset in placement (place the pivot directly in the center of the cell? a little above ? a little to the right ?...)
+
     public Placeable(GameObject prefab, List<Vector2Int> shape)
     {
         this.prefab = prefab;

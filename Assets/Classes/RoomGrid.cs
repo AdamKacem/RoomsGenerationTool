@@ -36,7 +36,7 @@ public class RoomGrid
     {
         int restW = (gridWidth + 1) % 2;
         int restH = (gridHeight + 1) % 2;
-        Debug.Log("origin: " + origin);
+       
         //Debug.Log("origin: " + origin);
 
         return new Vector3(
