@@ -44,8 +44,11 @@ public class wallPlacer : MonoBehaviour
         }
 
         int widthMod = (room.gridWidth + 2) % 4;
+        
         switch (widthMod)
         {
+            case 0:
+                break;
             case 1:
                 Instantiate(wall25, widthPos - new Vector3(1.5f,0,0), Quaternion.identity);
                 Instantiate(wall25, widthPos + zTranslator - new Vector3(1.5f, 0, 0), rotation180);
@@ -75,6 +78,8 @@ public class wallPlacer : MonoBehaviour
         int heightMod = (room.gridHeight + 2) % 4;
         switch (heightMod)
         {
+            case 0:
+                break;
             case 1:
                 Instantiate(wall25, heightPos - new Vector3(0, 0, 1.5f), rotation90);
                 Instantiate(wall25, heightPos + xTranslator - new Vector3(0, 0, 1.5f), rotationM90);

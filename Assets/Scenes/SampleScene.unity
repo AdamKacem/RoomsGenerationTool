@@ -377,6 +377,53 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
+--- !u!1 &772431831
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 772431832}
+  - component: {fileID: 772431833}
+  m_Layer: 0
+  m_Name: WallDecorator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &772431832
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 772431831}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1026530157}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &772431833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 772431831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3370d67ff65742e4d9890ea5054ceab6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  banner: {fileID: 7030994941266997987, guid: 725d9061657be724facf6fda9fe05b4f, type: 3}
+  torch: {fileID: 8583780524957933453, guid: 5fbfbee0f9885764383291c4c5e18668, type: 3}
+  roomGridObject: {fileID: 1225951817}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -458,8 +505,9 @@ Transform:
   - {fileID: 1178997797}
   - {fileID: 1225951818}
   - {fileID: 2004964218}
-  - {fileID: 1825103169}
   - {fileID: 1122108459}
+  - {fileID: 1825103169}
+  - {fileID: 772431832}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1122108457
@@ -600,10 +648,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 156ae0d2b8370624f841b2239e346444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  houseWidth: 7
-  houseHeight: 7
+  houseWidth: 10
+  houseHeight: 10
   cellSize: 1
-  RoomObject: {fileID: 1225951817}
 --- !u!1 &1825103167
 GameObject:
   m_ObjectHideFlags: 0
@@ -638,8 +685,8 @@ MonoBehaviour:
   Pot: {fileID: 11400000, guid: 6452f3764f7eb3646968e56122f59dc3, type: 2}
   Pillar: {fileID: 11400000, guid: 34fe9c807382c7f44ad8d27ad8551022, type: 2}
   roomObject: {fileID: 1225951817}
-  a: 1
-  b: 1
+  a: 0
+  b: 0
 --- !u!4 &1825103169
 Transform:
   m_ObjectHideFlags: 0
@@ -648,7 +695,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1825103167}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

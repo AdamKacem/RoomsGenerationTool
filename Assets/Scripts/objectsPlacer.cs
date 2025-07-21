@@ -3,7 +3,7 @@ using UnityEngine;
 public class objectsPlacer : MonoBehaviour
 {
 
-    public Placeable Chair;
+    public Placeable Chair; 
     public Placeable TableChair;
     public Placeable Pot;
     public Placeable Pillar;
@@ -21,20 +21,20 @@ public class objectsPlacer : MonoBehaviour
         
 
 
-        //PlaceObject(Chair, room);
-        PlaceObject(TableChair, room);
-        PlaceObject(Pillar, room);
-        PlaceObject(Pillar, room);
-        PlaceObject(Pillar, room);
-        PlaceObject(Pot, room);
-        PlaceObject(Chair, room);
+        //PlaceFloorObject(Chair, room);
+        PlaceFloorObject(TableChair, room);
+        PlaceFloorObject(Pillar, room);
+        PlaceFloorObject(Pillar, room);
+        
+        PlaceFloorObject(Pot, room);
+        //PlaceFloorObject(Chair, room);
         
 
-        //PlaceObjectManually(BedObject, room ,a,b);
+        PlaceObjectManually(Chair, room ,a,b);
 
     }
 
-    void PlaceObject(Placeable placeable, RoomGrid room)
+    bool PlaceFloorObject(Placeable placeable, RoomGrid room)
     {
         GameObject obj = placeable.prefab;
 
@@ -52,18 +52,20 @@ public class objectsPlacer : MonoBehaviour
                 int z = coords.y;
 
                 Vector3 position = room.GetWorldPosition(x, z);
-                float randomAngle = Random.Range(0, 3) * 90f;
-                Instantiate(obj, position+placeable.offset, Quaternion.Euler(0, 0, 0));
-                break;
+                float randomAngle = 0;
+                if (placeable.canRotate) randomAngle = Random.Range(0, 3) * 90f;
+                Instantiate(obj, position+placeable.offset, Quaternion.Euler(0, randomAngle, 0));
+                return true;
+               
             }
 
 
         }
     
-
+        return false;
     }
 
-    void PlaceObjectManually(GameObject obj, RoomGrid room,int x,int z)
+    void PlaceObjectManually(Placeable placeable, RoomGrid room,int x,int z)
     {
 
 
@@ -71,14 +73,18 @@ public class objectsPlacer : MonoBehaviour
 
         float randomAngle = Random.value < 0.5f ? 90f : 0f;
 
-        Instantiate(obj, position, Quaternion.Euler(0, randomAngle, 0));
+        Instantiate(placeable.prefab, position, Quaternion.Euler(0, randomAngle, 0));
 
 
     }
 
     
-    
+    void PlaceWallObject()
+    {
 
+
+
+    }
 
 
 
