@@ -15,5 +15,5 @@ MonoBehaviour:
   prefab: {fileID: 3713104444964819695, guid: 2f3f7d4927009b84583c02fcbc509217, type: 3}
   shape:
   - {x: 0, y: 0}
-  canRotate: 1
+  canRotate: 0
   offset: {x: 0, y: 0, z: 0}

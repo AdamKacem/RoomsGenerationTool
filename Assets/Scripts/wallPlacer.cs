@@ -4,18 +4,17 @@ public class wallPlacer : MonoBehaviour
 {
   
     public GameObject wall;
-    public GameObject roomObject;
+   
+
     public RoomGrid room;
-
-
     public GameObject wall25, wall5, wall75;
 
    
 
     
-    void Start()
+    public void PlaceWalls()
     {
-        room = roomObject.GetComponent<RoomGridObject>().room;
+        
 
         
 
@@ -94,15 +93,15 @@ public class wallPlacer : MonoBehaviour
                 break;
         }
 
-        Debug.Log("HeightMod: " + heightMod + " WidthMod: " + widthMod);
+       
 
 
 
         
     }
 
-    void Update()
+    public void Init(RoomGrid room)
     {
-        
+        this.room = room;
     }
 }

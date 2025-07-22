@@ -8,16 +8,16 @@ public class objectsPlacer : MonoBehaviour
     public Placeable Pot;
     public Placeable Pillar;
 
-    public GameObject roomObject;
+    
     
 
     public int a, b;
     
-    RoomGrid room;
-    void Start()
+    public RoomGrid room;
+    public void PlaceObjects()
     {
        
-        room = roomObject.GetComponent<RoomGridObject>().room;
+        
         
 
 
@@ -78,7 +78,10 @@ public class objectsPlacer : MonoBehaviour
 
     }
 
-    
+    public void Init(RoomGrid room)
+    {
+        this.room = room;
+    }
     void PlaceWallObject()
     {
 

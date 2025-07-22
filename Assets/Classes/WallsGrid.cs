@@ -23,7 +23,7 @@ public class WallsGrid
 
             freeWallSlots.Add(wallNum, new List<int>());
 
-            Debug.Log(wallNum+" : "+limit);
+            
             for (int slot = 0; slot < limit; slot++)
             {
                 freeWallSlots[wallNum].Add(slot);
@@ -75,7 +75,7 @@ public class WallsGrid
     public void DecorateWall(GameObject obj, Transform transform , int Wall=-1)
     {
         int wallNumber = Random.Range(0, 4);
-        Debug.Log(wallNumber);
+        
         if (Wall != -1)
             wallNumber = Wall;
         float x, y, z, angle = 0;

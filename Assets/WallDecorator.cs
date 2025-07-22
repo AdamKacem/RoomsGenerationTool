@@ -5,20 +5,20 @@ public class WallDecorator : MonoBehaviour
     public GameObject banner;
     public GameObject torch;
 
-    RoomGridObject RoomGridHolder;
+    
 
-    public GameObject roomGridObject;
+    
     RoomGrid room;
 
     WallsGrid wallsGrid;
    
-    void Start()
+    public void DecorateWalls()
     {
 
-        room = roomGridObject.GetComponent<RoomGridObject>().room;
         
-        wallsGrid = new WallsGrid(room);
-        wallsGrid.LogFreeSlots();
+        
+        
+        
 
         int wallNumber = Random.Range(0, 4);
 
@@ -30,6 +30,10 @@ public class WallDecorator : MonoBehaviour
 
     }
 
-   
+   public void Init(RoomGrid room)
+    {
+        this.room = room;
+        wallsGrid = new WallsGrid(room);
+    }
     
 }
