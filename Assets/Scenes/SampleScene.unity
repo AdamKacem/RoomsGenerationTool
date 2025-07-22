@@ -502,8 +502,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1178997797}
   - {fileID: 1225951818}
+  - {fileID: 1178997797}
   - {fileID: 2004964218}
   - {fileID: 1122108459}
   - {fileID: 1825103169}
@@ -649,7 +649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   houseWidth: 10
-  houseHeight: 10
+  houseHeight: 20
   cellSize: 1
 --- !u!1 &1825103167
 GameObject:

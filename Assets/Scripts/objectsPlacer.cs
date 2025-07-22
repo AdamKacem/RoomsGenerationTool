@@ -54,7 +54,7 @@ public class objectsPlacer : MonoBehaviour
                 Vector3 position = room.GetWorldPosition(x, z);
                 float randomAngle = 0;
                 if (placeable.canRotate) randomAngle = Random.Range(0, 3) * 90f;
-                Instantiate(obj, position+placeable.offset, Quaternion.Euler(0, randomAngle, 0));
+                Instantiate(obj, position+placeable.offset, Quaternion.Euler(0, randomAngle, 0) ,transform);
                 return true;
                
             }
@@ -73,7 +73,7 @@ public class objectsPlacer : MonoBehaviour
 
         float randomAngle = Random.value < 0.5f ? 90f : 0f;
 
-        Instantiate(placeable.prefab, position, Quaternion.Euler(0, randomAngle, 0));
+        Instantiate(placeable.prefab, position, Quaternion.Euler(0, randomAngle, 0), transform);
 
 
     }

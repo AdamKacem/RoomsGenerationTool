@@ -37,8 +37,8 @@ public class wallPlacer : MonoBehaviour
 
         for (int i = 0; i < ((room.gridWidth+2)/4); i++)
         {
-            Instantiate(wall, widthPos, Quaternion.identity);
-            Instantiate(wall, widthPos + zTranslator, rotation180);
+            Instantiate(wall, widthPos, Quaternion.identity ,transform);
+            Instantiate(wall, widthPos + zTranslator, rotation180, transform);
             widthPos += new Vector3(4, 0, 0);
     
         }
@@ -50,16 +50,16 @@ public class wallPlacer : MonoBehaviour
             case 0:
                 break;
             case 1:
-                Instantiate(wall25, widthPos - new Vector3(1.5f,0,0), Quaternion.identity);
-                Instantiate(wall25, widthPos + zTranslator - new Vector3(1.5f, 0, 0), rotation180);
+                Instantiate(wall25, widthPos - new Vector3(1.5f,0,0), Quaternion.identity, transform);
+                Instantiate(wall25, widthPos + zTranslator - new Vector3(1.5f, 0, 0), rotation180, transform);
                 break;
             case 2:
-                Instantiate(wall5, widthPos - new Vector3(1f, 0, 0), Quaternion.identity);
-                Instantiate(wall5, widthPos + zTranslator - new Vector3(1f, 0, 0) , rotation180);
+                Instantiate(wall5, widthPos - new Vector3(1f, 0, 0), Quaternion.identity, transform);
+                Instantiate(wall5, widthPos + zTranslator - new Vector3(1f, 0, 0) , rotation180, transform);
                 break;
             default:
-                Instantiate(wall75, widthPos - new Vector3(0.5f, 0, 0), Quaternion.identity);
-                Instantiate(wall75, widthPos + zTranslator - new Vector3(0.5f, 0, 0), rotation180);
+                Instantiate(wall75, widthPos - new Vector3(0.5f, 0, 0), Quaternion.identity, transform);
+                Instantiate(wall75, widthPos + zTranslator - new Vector3(0.5f, 0, 0), rotation180, transform);
                 break;
         }
 
@@ -68,8 +68,8 @@ public class wallPlacer : MonoBehaviour
         for (int i = 0; i < ((room.gridHeight+2)/4); i++)
         {
             
-            Instantiate(wall, heightPos, rotation90);
-            Instantiate(wall, heightPos+xTranslator, rotationM90);
+            Instantiate(wall, heightPos, rotation90, transform);
+            Instantiate(wall, heightPos+xTranslator, rotationM90, transform);
            
             heightPos += new Vector3(0, 0, 4);
            
@@ -81,16 +81,16 @@ public class wallPlacer : MonoBehaviour
             case 0:
                 break;
             case 1:
-                Instantiate(wall25, heightPos - new Vector3(0, 0, 1.5f), rotation90);
-                Instantiate(wall25, heightPos + xTranslator - new Vector3(0, 0, 1.5f), rotationM90);
+                Instantiate(wall25, heightPos - new Vector3(0, 0, 1.5f), rotation90, transform);
+                Instantiate(wall25, heightPos + xTranslator - new Vector3(0, 0, 1.5f), rotationM90, transform);
                 break;
             case 2:
-                Instantiate(wall5, heightPos - new Vector3(0, 0, 1.5f), rotation90);
-                Instantiate(wall5, heightPos + xTranslator - new Vector3(0, 0, 1.5f), rotationM90);
+                Instantiate(wall5, heightPos - new Vector3(0, 0, 1.5f), rotation90, transform);
+                Instantiate(wall5, heightPos + xTranslator - new Vector3(0, 0, 1.5f), rotationM90, transform);
                 break;
             default:
-                Instantiate(wall75, heightPos - new Vector3(0, 0, 0.5f), rotation90);
-                Instantiate(wall75, heightPos + xTranslator - new Vector3(0, 0, 0.5f), rotationM90);
+                Instantiate(wall75, heightPos - new Vector3(0, 0, 0.5f), rotation90, transform);
+                Instantiate(wall75, heightPos + xTranslator - new Vector3(0, 0, 0.5f), rotationM90, transform);
                 break;
         }
 

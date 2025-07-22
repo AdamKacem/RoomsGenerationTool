@@ -9,7 +9,6 @@ public class RoomGridObject : MonoBehaviour
     
     void Awake()
     {
-        
 
         
 

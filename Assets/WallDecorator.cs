@@ -8,7 +8,7 @@ public class WallDecorator : MonoBehaviour
     RoomGridObject RoomGridHolder;
 
     public GameObject roomGridObject;
-   RoomGrid room;
+    RoomGrid room;
 
     WallsGrid wallsGrid;
    
@@ -16,13 +16,15 @@ public class WallDecorator : MonoBehaviour
     {
 
         room = roomGridObject.GetComponent<RoomGridObject>().room;
+        
         wallsGrid = new WallsGrid(room);
+        wallsGrid.LogFreeSlots();
 
         int wallNumber = Random.Range(0, 4);
 
         for (int i = 0; i < 4; i++) { 
-        wallsGrid.DecorateWall(banner);
-        wallsGrid.DecorateWall(torch,3);
+        wallsGrid.DecorateWall(banner, transform);
+        wallsGrid.DecorateWall(torch, transform);
         }
 
 
