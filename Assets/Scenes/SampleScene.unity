@@ -459,6 +459,7 @@ MonoBehaviour:
   x: 10
   y: 0
   z: 10
+  seed: 501
   widthTest: 7
   heightTest: 7
 --- !u!4 &1716735486

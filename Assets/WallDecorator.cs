@@ -9,9 +9,18 @@ public class WallDecorator : MonoBehaviour
 
     
     RoomGrid room;
+    private SeededRandom rng;
 
     WallsGrid wallsGrid;
-   
+
+    public void Init(RoomGrid room, SeededRandom rng)
+    {
+        this.room = room;
+        this.rng = rng;
+        wallsGrid = new WallsGrid(room, rng);
+        
+    }
+
     public void DecorateWalls()
     {
 
@@ -30,10 +39,6 @@ public class WallDecorator : MonoBehaviour
 
     }
 
-   public void Init(RoomGrid room)
-    {
-        this.room = room;
-        wallsGrid = new WallsGrid(room);
-    }
+   
     
 }

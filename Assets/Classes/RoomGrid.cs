@@ -62,12 +62,12 @@ public class RoomGrid
 
     
 
-    public Vector2Int GetRandomFreeCell()
+    public Vector2Int GetRandomFreeCell(SeededRandom rng)
     {
         if (freeCells.Count == 0)
             throw new System.Exception("No free cells left!");
 
-        int randomIndex = Random.Range(0, freeCells.Count);
+        int randomIndex = rng.Range(0, freeCells.Count);
         return freeCells[randomIndex];
     }
 

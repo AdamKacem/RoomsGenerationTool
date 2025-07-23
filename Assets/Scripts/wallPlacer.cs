@@ -5,18 +5,33 @@ public class wallPlacer : MonoBehaviour
   
     public GameObject wall;
    
-
+    
     public RoomGrid room;
     public GameObject wall25, wall5, wall75;
 
+    public int openWall;
+
    
 
-    
+
+
+
+    public void Init(RoomGrid room, int openWall)
+    {
+        this.room = room;
+        
+        this.openWall = openWall;
+        
+    }
+
+
     public void PlaceWalls()
     {
         
 
         
+
+        //Add logic of openWall (a wall with a door)
 
 
         Vector3 origin = room.origin;
@@ -100,8 +115,5 @@ public class wallPlacer : MonoBehaviour
         
     }
 
-    public void Init(RoomGrid room)
-    {
-        this.room = room;
-    }
+   
 }

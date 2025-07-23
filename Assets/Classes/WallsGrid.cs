@@ -11,23 +11,26 @@ public class WallsGrid
     private Dictionary<int, List<int>> freeWallSlots;
 
     RoomGrid room;
-    
-    public WallsGrid(RoomGrid room) {
+    private SeededRandom rng;
+
+    public WallsGrid(RoomGrid room, SeededRandom rng)
+    {
         this.room = room;
+        this.rng = rng;
         freeWallSlots = new Dictionary<int, List<int>>();
         int limit;
         for (int wallNum = 0; wallNum < 4; wallNum++)
         {
-            if(wallNum==0||wallNum==1)limit = room.gridHeight;
+            if (wallNum == 0 || wallNum == 1) limit = room.gridHeight;
             else limit = room.gridWidth;
 
             freeWallSlots.Add(wallNum, new List<int>());
 
-            
+
             for (int slot = 0; slot < limit; slot++)
             {
                 freeWallSlots[wallNum].Add(slot);
-                
+
             }
         }
 
@@ -38,7 +41,13 @@ public class WallsGrid
         {
             occupiedWallSlots.Add(i, new HashSet<int>());
         }
+
+        
     }
+
+
+
+
     public void LogFreeSlots()
     {
         if (freeWallSlots == null || freeWallSlots.Count == 0)
@@ -55,16 +64,23 @@ public class WallsGrid
         }
         Debug.Log("=======================");
     }
+
+
+
+
+
     int RandomFreeSlot(int wallNumber) //with occupation
     {
         if (freeWallSlots[wallNumber].Count == 0)
             return -1;
 
-        int randomIndex = Random.Range(0, freeWallSlots[wallNumber].Count);
+        int randomIndex = rng.Range(0, freeWallSlots[wallNumber].Count);
         int slot = freeWallSlots[wallNumber][randomIndex];
         OccupySlot(wallNumber, slot);
         return slot;
     }
+
+
 
     void OccupySlot(int wallNumber, int slot)
     {
@@ -72,16 +88,19 @@ public class WallsGrid
         freeWallSlots[wallNumber].Remove(slot);
     }
 
+
+
     public void DecorateWall(GameObject obj, Transform transform , int Wall=-1)
     {
-        int wallNumber = Random.Range(0, 4);
+        int wallNumber = rng.Range(0, 4);
         
         if (Wall != -1)
             wallNumber = Wall;
         float x, y, z, angle = 0;
         Vector3 position;
 
-        y = Random.value + 2.7f;
+        y = rng.Range(2.7f, 3.7f);
+
         switch (wallNumber)
         {
             case 0:

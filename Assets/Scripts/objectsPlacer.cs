@@ -14,6 +14,15 @@ public class objectsPlacer : MonoBehaviour
     public int a, b;
     
     public RoomGrid room;
+
+    private SeededRandom rng;
+
+    public void Init(RoomGrid room, SeededRandom rng)
+    {
+        this.room = room;
+        this.rng = rng;
+    }
+
     public void PlaceObjects()
     {
        
@@ -43,7 +52,7 @@ public class objectsPlacer : MonoBehaviour
         
         for (int attempt = 0; attempt<100;attempt++)
         {
-            Vector2Int coords = room.GetRandomFreeCell();
+            Vector2Int coords = room.GetRandomFreeCell(rng);
             if (placeable.CanPlaceAt(room, coords, placeable.shape))
             {
                 
@@ -53,7 +62,7 @@ public class objectsPlacer : MonoBehaviour
 
                 Vector3 position = room.GetWorldPosition(x, z);
                 float randomAngle = 0;
-                if (placeable.canRotate) randomAngle = Random.Range(0, 3) * 90f;
+                if (placeable.canRotate) randomAngle = rng.Range(0,3) * 90f;
                 Instantiate(obj, position+placeable.offset, Quaternion.Euler(0, randomAngle, 0) ,transform);
                 return true;
                
@@ -78,16 +87,8 @@ public class objectsPlacer : MonoBehaviour
 
     }
 
-    public void Init(RoomGrid room)
-    {
-        this.room = room;
-    }
-    void PlaceWallObject()
-    {
-
-
-
-    }
+   
+    
 
 
 

@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class RoomGenerator : MonoBehaviour
 {
-    
 
+    public SeededRandom rng;
     public objectsPlacer objectsPlacer;
     public wallPlacer wallPlacer;
     public WallDecorator wallDecorator;
@@ -12,15 +12,19 @@ public class RoomGenerator : MonoBehaviour
 
     
    
-    public void Init(float width, float height)
+    public void Init(float width, float height, int openWall, SeededRandom rng)
     {
         room = new RoomGrid(width, height,1f,transform.position);
         
-        
-        wallPlacer.Init(room);
-        objectsPlacer.Init(room);
-        wallDecorator.Init(room);
+        //static
+        wallPlacer.Init(room, openWall);
         gridDrawer.Init(room);
+
+        //need randomness
+        objectsPlacer.Init(room, rng);
+        wallDecorator.Init(room, rng);
+        
+        
 
     }
 
