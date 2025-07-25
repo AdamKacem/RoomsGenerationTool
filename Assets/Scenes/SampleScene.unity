@@ -459,9 +459,9 @@ MonoBehaviour:
   x: 10
   y: 0
   z: 10
-  seed: 501
-  widthTest: 7
-  heightTest: 7
+  seed: 147
+  widthTest: 10
+  heightTest: 12
 --- !u!4 &1716735486
 Transform:
   m_ObjectHideFlags: 0

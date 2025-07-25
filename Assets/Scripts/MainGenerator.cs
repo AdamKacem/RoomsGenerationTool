@@ -33,7 +33,7 @@ public class MainGenerator : MonoBehaviour
     //with seed
     void GenerateOneRoom(int width, int height, int openWall, Vector3 position, SeededRandom rng)
     {
-        Debug.Log("Created a room with pre-specified seed.");
+        //Debug.Log("Created a room with pre-specified seed.");
         GameObject newRoom = Instantiate(roomGeneratorObject, position, Quaternion.identity);
         RoomGenerator roomGenerator = newRoom.GetComponent<RoomGenerator>();
         //initialize roomGenerator
@@ -49,7 +49,7 @@ public class MainGenerator : MonoBehaviour
     {
         int seed = Random.Range(0, 500);
         SeededRandom rng = new SeededRandom(seed);
-        Debug.Log("Last room was created with seed: " + seed); 
+        //Debug.Log("Last room was created with seed: " + seed); 
         GameObject newRoom = Instantiate(roomGeneratorObject, position, Quaternion.identity);
         RoomGenerator roomGenerator = newRoom.GetComponent<RoomGenerator>();
         //initialize roomGenerator

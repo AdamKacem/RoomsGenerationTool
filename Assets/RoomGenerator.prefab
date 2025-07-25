@@ -48,6 +48,11 @@ MonoBehaviour:
   TableChair: {fileID: 11400000, guid: c4b1788e09748264f893a6c8d8f30617, type: 2}
   Pot: {fileID: 11400000, guid: 6452f3764f7eb3646968e56122f59dc3, type: 2}
   Pillar: {fileID: 11400000, guid: 34fe9c807382c7f44ad8d27ad8551022, type: 2}
+  Placeables:
+  - {fileID: 11400000, guid: 7a373c5d0df7a8a43a06f1076ad32a3b, type: 2}
+  - {fileID: 11400000, guid: 34fe9c807382c7f44ad8d27ad8551022, type: 2}
+  - {fileID: 11400000, guid: 6452f3764f7eb3646968e56122f59dc3, type: 2}
+  - {fileID: 11400000, guid: c4b1788e09748264f893a6c8d8f30617, type: 2}
   a: 0
   b: 0
 --- !u!1 &2018995154005060832
@@ -94,8 +99,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3370d67ff65742e4d9890ea5054ceab6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  banner: {fileID: 7030994941266997987, guid: 725d9061657be724facf6fda9fe05b4f, type: 3}
-  torch: {fileID: 8583780524957933453, guid: 5fbfbee0f9885764383291c4c5e18668, type: 3}
+  wallPlaceables:
+  - {fileID: 11400000, guid: 7f8cd8a200d6ea5439765e8e0acabb06, type: 2}
+  - {fileID: 11400000, guid: de10d8235163bc54d8abd1bedff8248e, type: 2}
+  torch: {fileID: 11400000, guid: 8b4bd2f0f80cf0f40911c225773ce6f6, type: 2}
 --- !u!1 &6854774550201470103
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,3 +247,4 @@ MonoBehaviour:
   wall25: {fileID: 5413404963415038210, guid: 28e02a7ebae78d74c9d02e7ab6cada3b, type: 3}
   wall5: {fileID: 4827148807295930782, guid: e8471b2f01d7e084ab4fdb8d488ed049, type: 3}
   wall75: {fileID: 739678263756247340, guid: 5045041e282ca3343a0b0ade1dea67be, type: 3}
+  openWall: 0

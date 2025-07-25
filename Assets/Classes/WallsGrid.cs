@@ -1,14 +1,16 @@
 using UnityEngine;
 using System.Collections.Generic;
-
+using System;
 
 
 public class WallsGrid 
 {
 
-    private Dictionary<int, HashSet<int>> occupiedWallSlots;
+   
     
     private Dictionary<int, List<int>> freeWallSlots;
+
+
 
     RoomGrid room;
     private SeededRandom rng;
@@ -35,12 +37,9 @@ public class WallsGrid
         }
 
 
-        occupiedWallSlots = new Dictionary<int, HashSet<int>>();
+        
 
-        for (int i = 0; i < 4; i++)
-        {
-            occupiedWallSlots.Add(i, new HashSet<int>());
-        }
+        
 
         
     }
@@ -69,57 +68,79 @@ public class WallsGrid
 
 
 
-    int RandomFreeSlot(int wallNumber) //with occupation
+    int RandomFreeSlot(int wallNumber, int padding, bool priority=false) //with occupation
     {
         if (freeWallSlots[wallNumber].Count == 0)
             return -1;
+        
+        int randomIndex = priority ? rng.Range(Math.Min(padding, freeWallSlots[wallNumber].Count), Math.Max(freeWallSlots[wallNumber].Count-padding,0)) : rng.Range(0, freeWallSlots[wallNumber].Count);
 
-        int randomIndex = rng.Range(0, freeWallSlots[wallNumber].Count);
         int slot = freeWallSlots[wallNumber][randomIndex];
-        OccupySlot(wallNumber, slot);
+
+        if (!IsFreeSpace(wallNumber, slot, padding)) {
+            Debug.Log("Not enough space");
+            return -1;
+                }
+
+        //occupy padding slots
+        for (int i = 0; i <= padding;i++)
+        {
+            OccupySlot(wallNumber, slot+i);
+        }
+
         return slot;
     }
 
-
+    bool IsFreeSpace(int wallNumber, int slot ,int padding)
+    {
+        for (int i = 0;i <= padding; i++)
+        {
+            if (!freeWallSlots[wallNumber].Contains(slot + i)) return false ;
+        
+        }
+        return true;
+    }
 
     void OccupySlot(int wallNumber, int slot)
     {
-        occupiedWallSlots[wallNumber].Add(slot);
+        
         freeWallSlots[wallNumber].Remove(slot);
     }
 
+    
 
 
-    public void DecorateWall(GameObject obj, Transform transform , int Wall=-1)
+    public void DecorateWall(WallPlaceable placeable, Transform transform , int Wall=-1,bool priority=false)
     {
         int wallNumber = rng.Range(0, 4);
         
         if (Wall != -1)
             wallNumber = Wall;
+        
         float x, y, z, angle = 0;
         Vector3 position;
-
+        
         y = rng.Range(2.7f, 3.7f);
 
         switch (wallNumber)
         {
             case 0:
                 x = 0;
-                z = RandomFreeSlot(0);
+                z = RandomFreeSlot(0, placeable.padding,priority);
                 if (z == -1) return;
                 position = new(x - 0.5f, y, z);
                 angle = 90f;
                 break;
             case 1:
                 x = room.gridWidth;
-                z = RandomFreeSlot(1);
+                z = RandomFreeSlot(1, placeable.padding,priority);
                 if (z == -1) return;
                 position = new(x + 0.5f, y, z);
                 angle = -90f;
                 break;
             case 2:
                 z = 0;
-                x = RandomFreeSlot(2);
+                x = RandomFreeSlot(2, placeable.padding, priority);
                 if (x == -1) return;
                 position = new(x, y, z - 0.5f);
 
@@ -127,7 +148,7 @@ public class WallsGrid
 
             default:
                 z = room.gridHeight;
-                x = RandomFreeSlot(3);
+                x = RandomFreeSlot(3, placeable.padding, priority);
                 if (x == -1) return;
                 position = new(x, y, z + 0.5f);
                 angle = 180f;
@@ -135,7 +156,7 @@ public class WallsGrid
 
         }
 
-        Object.Instantiate(obj, position + room.origin, Quaternion.Euler(0, angle, 0), transform);
+        UnityEngine.Object.Instantiate(placeable.prefab, position + room.origin, Quaternion.Euler(0, angle, 0), transform);
     }
 
 

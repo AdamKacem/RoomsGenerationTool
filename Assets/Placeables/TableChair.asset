@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fea936449ec00a44f81be0b805e99020, type: 3}
+  m_Script: {fileID: 11500000, guid: b9e611306700bbc43b1487c6aba7f21e, type: 3}
   m_Name: TableChair
   m_EditorClassIdentifier: 
-  prefab: {fileID: 7727206508739052598, guid: f6668723e908cd04e964c45a0226842d, type: 3}
+  prefab: {fileID: 5612977446245086202, guid: 92e7667a99576944fbb765daeab2d849, type: 3}
   shape:
   - {x: 0, y: 0}
   - {x: 0, y: 1}
@@ -23,4 +23,8 @@ MonoBehaviour:
   - {x: -1, y: -1}
   - {x: -1, y: 1}
   - {x: 1, y: -1}
+  type: TableChair
   canRotate: 1
+  offset: {x: 0, y: 0, z: 0}
+  radiusForSameObject: 0
+  keepAwayFromCorners: 0

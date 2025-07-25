@@ -9,11 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fea936449ec00a44f81be0b805e99020, type: 3}
+  m_Script: {fileID: 11500000, guid: b9e611306700bbc43b1487c6aba7f21e, type: 3}
   m_Name: Pillar
   m_EditorClassIdentifier: 
   prefab: {fileID: 3713104444964819695, guid: 2f3f7d4927009b84583c02fcbc509217, type: 3}
   shape:
   - {x: 0, y: 0}
+  type: Pillar
   canRotate: 0
   offset: {x: 0, y: 0, z: 0}
+  radiusForSameObject: 5
+  keepAwayFromCorners: 1

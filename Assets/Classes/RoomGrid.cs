@@ -7,8 +7,9 @@ public class RoomGrid
     public Vector3 origin;
     private bool[,] occupiedCell;
     private List<Vector2Int> freeCells;
+    public Dictionary<string, HashSet<Vector2Int>> freeCellsByType = new();
+    //in the future make this better: (instead of setting types manually make them generate themselves from the placeables in use)
 
-   
 
 
     public RoomGrid(float houseWidth, float houseHeight, float cellSize, Vector3 center)
@@ -21,6 +22,16 @@ public class RoomGrid
 
         origin = center - new Vector3(gridWidth / 2f, 0, gridHeight / 2f);
 
+
+        InitFreeCells();
+       
+
+        occupiedCell = new bool[gridWidth, gridHeight];
+    }
+
+
+    void InitFreeCells()
+    {
         freeCells = new List<Vector2Int>();
         for (int x = 0; x < gridWidth; x++)
         {
@@ -29,12 +40,25 @@ public class RoomGrid
                 freeCells.Add(new Vector2Int(x, z));
             }
         }
-
-       
-
-        occupiedCell = new bool[gridWidth, gridHeight];
     }
 
+    public void InitCellsForType(Placeable placeable) 
+    {  
+        freeCellsByType[placeable.type] = new HashSet<Vector2Int>(freeCells);
+        
+        //remove corners if necessary
+        if (placeable.keepAwayFromCorners)
+        {
+            //Debug.Log("Removed Corners for: "+placeable.type);
+            //remove corners
+
+        }
+
+        
+        
+    
+    }
+   
 
     public Vector3 GetOrigin() {  return origin; }
 
@@ -62,13 +86,19 @@ public class RoomGrid
 
     
 
-    public Vector2Int GetRandomFreeCell(SeededRandom rng)
+    public Vector2Int GetRandomFreeCell(Placeable placeable, SeededRandom rng )
     {
-        if (freeCells.Count == 0)
-            throw new System.Exception("No free cells left!");
+        if (freeCellsByType[placeable.type].Count == 0)
+        {
+            Debug.Log("No free cells left!");
+            return new Vector2Int(-1,-1);
+        }
+            
 
-        int randomIndex = rng.Range(0, freeCells.Count);
-        return freeCells[randomIndex];
+        int randomIndex = rng.Range(0, freeCellsByType[placeable.type].Count);
+        var availableCells = new List<Vector2Int>(freeCellsByType[placeable.type]);
+
+        return availableCells[randomIndex];
     }
 
  public bool InBounds(int x, int z)

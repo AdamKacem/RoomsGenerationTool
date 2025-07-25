@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Collections.Generic;
 public class objectsPlacer : MonoBehaviour
 {
 
@@ -8,8 +8,8 @@ public class objectsPlacer : MonoBehaviour
     public Placeable Pot;
     public Placeable Pillar;
 
-    
-    
+    public List<Placeable> Placeables;
+
 
     public int a, b;
     
@@ -21,25 +21,39 @@ public class objectsPlacer : MonoBehaviour
     {
         this.room = room;
         this.rng = rng;
+
+        //make the room create freeCellsByType for the types of placeables it will handle
+        foreach (Placeable placeable in Placeables)
+        {
+            room.InitCellsForType(placeable);
+        }
+
+        //apply the rules 
+        
     }
 
     public void PlaceObjects()
     {
-       
-        
-        
 
 
-        //PlaceFloorObject(Chair, room);
+
+
+
+        /* //Place with console logs
+         Debug.Log(PlaceFloorObject(TableChair, room) ? "Placed TableChair": "Failed to place TableChair") ;
+        Debug.Log(PlaceFloorObject(Pillar, room) ? "Placed Pillar" : "Failed to place Pillar");
+        Debug.Log(PlaceFloorObject(Pillar, room) ? "Placed Pillar" : "Failed to place Pillar");
+
+
+        Debug.Log(PlaceFloorObject(Pot, room) ? "Placed Pot" : "Failed to place Pot");*/
+
         PlaceFloorObject(TableChair, room);
         PlaceFloorObject(Pillar, room);
         PlaceFloorObject(Pillar, room);
-        
         PlaceFloorObject(Pot, room);
-        //PlaceFloorObject(Chair, room);
-        
 
-        PlaceObjectManually(Chair, room ,a,b);
+
+
 
     }
 
@@ -52,13 +66,16 @@ public class objectsPlacer : MonoBehaviour
         
         for (int attempt = 0; attempt<100;attempt++)
         {
-            Vector2Int coords = room.GetRandomFreeCell(rng);
+            Vector2Int coords = room.GetRandomFreeCell(placeable, this.rng);
+            int x = coords.x;
+            int z = coords.y;
+            if(x==-1)return false;
+
             if (placeable.CanPlaceAt(room, coords, placeable.shape))
             {
                 
-                placeable.MarkCells(room, coords, placeable.shape);
-                int x = coords.x;
-                int z = coords.y;
+                placeable.MarkShapeCells(room, coords, placeable.shape);//mark grid occupation for all the other objects
+                placeable.MarkRadiusCells(room, coords);//make the grid occupation and radius for objects with same type
 
                 Vector3 position = room.GetWorldPosition(x, z);
                 float randomAngle = 0;

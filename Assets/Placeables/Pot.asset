@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fea936449ec00a44f81be0b805e99020, type: 3}
+  m_Script: {fileID: 11500000, guid: b9e611306700bbc43b1487c6aba7f21e, type: 3}
   m_Name: Pot
   m_EditorClassIdentifier: 
   prefab: {fileID: 2508803079818082220, guid: 616fdaa7dbff40e4f91c695be15f9f4f, type: 3}
@@ -18,5 +18,8 @@ MonoBehaviour:
   - {x: 0, y: 1}
   - {x: 1, y: 0}
   - {x: 1, y: 1}
+  type: Pot
   canRotate: 0
   offset: {x: 0.5, y: 0, z: 0.5}
+  radiusForSameObject: 0
+  keepAwayFromCorners: 1

@@ -9,11 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fea936449ec00a44f81be0b805e99020, type: 3}
+  m_Script: {fileID: 11500000, guid: b9e611306700bbc43b1487c6aba7f21e, type: 3}
   m_Name: Chair
   m_EditorClassIdentifier: 
   prefab: {fileID: 907737577407192764, guid: 3c94a574020d3de429d0c295b3a83db4, type: 3}
   shape:
   - {x: 0, y: 0}
+  type: Chair
   canRotate: 1
   offset: {x: 0, y: 0, z: 0}
+  radiusForSameObject: 0
+  keepAwayFromCorners: 0
