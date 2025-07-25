@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: torch
   m_EditorClassIdentifier: 
   prefab: {fileID: 8583780524957933453, guid: 5fbfbee0f9885764383291c4c5e18668, type: 3}
-  padding: 2
+  padding: 1
+  yOffset: 0
+  offset: 1
+  type: 

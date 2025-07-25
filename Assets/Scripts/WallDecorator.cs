@@ -39,10 +39,10 @@ public class WallDecorator : MonoBehaviour
 
         for (int i = 0; i < 4; i++) {
             randomWallPlaceable = wallPlaceables[rng.Range(0,wallPlaceables.Count)];
-            wallsGrid.DecorateWall(randomWallPlaceable, transform);
+            wallsGrid.DecorateWall(randomWallPlaceable, transform, -1, true);
         
         }
-
+        wallsGrid.LogFreeSlots();
 
     }
 

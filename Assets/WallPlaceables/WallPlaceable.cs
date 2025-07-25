@@ -7,14 +7,21 @@ public class WallPlaceable : ScriptableObject
 
     public int padding;
 
-    
+    public float yOffset;
+
+    public float offset;
+
+    public string type;
 
     
 
-    public WallPlaceable(GameObject prefab, int padding)
+    public WallPlaceable(GameObject prefab, int padding, float offset, float yOffset,string type)
     {
         this.prefab = prefab;
         this.padding = padding;
+        this.offset = offset;
+        this.yOffset = yOffset;
+        this.type = type;
     }
 
     

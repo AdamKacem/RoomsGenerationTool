@@ -73,12 +73,14 @@ public class WallsGrid
         if (freeWallSlots[wallNumber].Count == 0)
             return -1;
         
-        int randomIndex = priority ? rng.Range(Math.Min(padding, freeWallSlots[wallNumber].Count), Math.Max(freeWallSlots[wallNumber].Count-padding,0)) : rng.Range(0, freeWallSlots[wallNumber].Count);
+        int randomIndex = priority 
+            ? rng.Range(0, Math.Max(freeWallSlots[wallNumber].Count-padding,0)) 
+            : rng.Range(0, freeWallSlots[wallNumber].Count);
 
         int slot = freeWallSlots[wallNumber][randomIndex];
 
         if (!IsFreeSpace(wallNumber, slot, padding)) {
-            Debug.Log("Not enough space");
+            if(wallNumber==0) Debug.Log("Not enough space on wall 0 for slot: "+slot);
             return -1;
                 }
 
@@ -87,7 +89,7 @@ public class WallsGrid
         {
             OccupySlot(wallNumber, slot+i);
         }
-
+        if(padding==4)Debug.Log("Placed big banner at slot: "+slot);
         return slot;
     }
 
@@ -119,30 +121,30 @@ public class WallsGrid
         
         float x, y, z, angle = 0;
         Vector3 position;
-        
-        y = rng.Range(2.7f, 3.7f);
 
+        y = rng.Range(2.7f+placeable.yOffset, 3.7f);
+        
         switch (wallNumber)
         {
             case 0:
                 x = 0;
                 z = RandomFreeSlot(0, placeable.padding,priority);
                 if (z == -1) return;
-                position = new(x - 0.5f, y, z);
+                position = new(x - 0.5f, y, z + placeable.offset);
                 angle = 90f;
                 break;
             case 1:
                 x = room.gridWidth;
                 z = RandomFreeSlot(1, placeable.padding,priority);
                 if (z == -1) return;
-                position = new(x + 0.5f, y, z);
+                position = new(x + 0.5f, y, z + placeable.offset);
                 angle = -90f;
                 break;
             case 2:
                 z = 0;
                 x = RandomFreeSlot(2, placeable.padding, priority);
                 if (x == -1) return;
-                position = new(x, y, z - 0.5f);
+                position = new(x + placeable.offset, y, z - 0.5f);
 
                 break;
 
@@ -150,7 +152,7 @@ public class WallsGrid
                 z = room.gridHeight;
                 x = RandomFreeSlot(3, placeable.padding, priority);
                 if (x == -1) return;
-                position = new(x, y, z + 0.5f);
+                position = new(x + placeable.offset, y, z + 0.5f);
                 angle = 180f;
                 break;
 
