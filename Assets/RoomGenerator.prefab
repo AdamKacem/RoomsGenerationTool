@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &789504689342717152
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5020631660739544293}
+  - component: {fileID: 6582622982775808145}
+  m_Layer: 0
+  m_Name: TableGridDrawer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5020631660739544293
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789504689342717152}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1057845170809539977}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6582622982775808145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789504689342717152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e955b75a83324e249a506b75dd1ab091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1568557307497805788
 GameObject:
   m_ObjectHideFlags: 0
@@ -53,6 +97,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 34fe9c807382c7f44ad8d27ad8551022, type: 2}
   - {fileID: 11400000, guid: 6452f3764f7eb3646968e56122f59dc3, type: 2}
   - {fileID: 11400000, guid: c4b1788e09748264f893a6c8d8f30617, type: 2}
+  TableDecoration:
+  - {fileID: 11400000, guid: 0b5025cd6a3b7ad45abf02afe47f1f02, type: 2}
+  - {fileID: 11400000, guid: b54267db235a86040877169c46508681, type: 2}
+  - {fileID: 11400000, guid: 67885d7bdebdd7440bda2dc2369246cb, type: 2}
+  - {fileID: 11400000, guid: c363e7232d1f8a84fa67f2e9e26f659d, type: 2}
   a: 0
   b: 0
 --- !u!1 &2018995154005060832
@@ -181,6 +230,7 @@ Transform:
   - {fileID: 1341749249129034449}
   - {fileID: 2072968280026978050}
   - {fileID: 3201972631175098788}
+  - {fileID: 5020631660739544293}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1735410962413089856

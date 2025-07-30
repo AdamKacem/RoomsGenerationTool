@@ -10,7 +10,8 @@ public class objectsPlacer : MonoBehaviour
 
     public List<Placeable> Placeables;
 
-
+    public List<Placeable> TableDecoration;
+    
     public int a, b;
     
     public RoomGrid room;
@@ -23,12 +24,14 @@ public class objectsPlacer : MonoBehaviour
         this.rng = rng;
 
         //make the room create freeCellsByType for the types of placeables it will handle
+        //(the types that need adding are those who follwo the rule of no adjacents of same type)
+        
         foreach (Placeable placeable in Placeables)
         {
             room.InitCellsForType(placeable);
         }
 
-        //apply the rules 
+        
         
     }
 
@@ -47,17 +50,17 @@ public class objectsPlacer : MonoBehaviour
 
         Debug.Log(PlaceFloorObject(Pot, room) ? "Placed Pot" : "Failed to place Pot");*/
 
-        PlaceFloorObject(TableChair, room);
-        PlaceFloorObject(Pillar, room);
-        PlaceFloorObject(Pillar, room);
-        PlaceFloorObject(Pot, room);
+        PlaceFloorObject(TableChair, room,transform);
+        PlaceFloorObject(Pillar, room,transform);
+        PlaceFloorObject(Pillar, room, transform);
+        PlaceFloorObject(Pot, room,transform);
 
 
 
 
     }
 
-    bool PlaceFloorObject(Placeable placeable, RoomGrid room)
+    bool PlaceFloorObject(Placeable placeable, RoomGrid room, Transform parent,bool decoratingTable=false)
     {
         GameObject obj = placeable.prefab;
 
@@ -71,16 +74,49 @@ public class objectsPlacer : MonoBehaviour
             int z = coords.y;
             if(x==-1)return false;
 
+
             if (placeable.CanPlaceAt(room, coords, placeable.shape))
             {
+                Debug.Log($"Placing {placeable.type} at {coords}");
                 
                 placeable.MarkShapeCells(room, coords, placeable.shape);//mark grid occupation for all the other objects
                 placeable.MarkRadiusCells(room, coords);//make the grid occupation and radius for objects with same type
 
                 Vector3 position = room.GetWorldPosition(x, z);
+                
                 float randomAngle = 0;
-                if (placeable.canRotate) randomAngle = rng.Range(0,3) * 90f;
-                Instantiate(obj, position+placeable.offset, Quaternion.Euler(0, randomAngle, 0) ,transform);
+                if (placeable.canRotate) { 
+                
+                    if (decoratingTable)
+                    {
+                        randomAngle = rng.Range(0.1f, 3.9f) * 90f;
+                    }
+                    else
+                    {
+                        randomAngle = rng.Range(0, 4) * 90f;
+                    }
+                } 
+
+                var newObj = Instantiate(obj, position + placeable.offset*room.cellSize, Quaternion.identity, parent);
+
+                //if the placeable is a TableChair, we decorate it randomly before rotating it
+
+                if (placeable.type == "TableChair")
+                {
+                    DecorateTable(newObj);
+
+                    
+
+
+                }
+
+                //Instantiate(obj, position + placeable.offset, Quaternion.identity, newObj);
+
+                //random rotation
+                Debug.Log(placeable.canRotate ? $"Rotating at degree: {randomAngle}" : $"Can't rotate this object");
+                newObj.transform.Rotate(0, randomAngle, 0);
+
+                
                 return true;
                
             }
@@ -106,7 +142,33 @@ public class objectsPlacer : MonoBehaviour
 
    
     
+    void DecorateTable(GameObject tableObject)
+    {
+        //initialize a tableGrid with a fixed origin 
+       TableGrid tableGrid = new TableGrid(12,7,0.15f, tableObject.transform.position);
+        tableGrid.ResetOrigin(tableObject.transform.position + new Vector3(-0.89f,0.89f,1f));
+        
+        Debug.Log(tableGrid.gridHeight+" : "+tableGrid.gridWidth);
 
+
+        for (int i = 0; i < 4; i++)
+        {
+
+        
+        //choose a random object and prepare the tableGrid for its type(now it wont have adjacents of same type)
+        Placeable randomDecoration = TableDecoration[rng.Range(0, TableDecoration.Count)];
+        tableGrid.InitCellsForType(randomDecoration);
+
+
+
+        //randomly place an object on the tableGrid
+        PlaceFloorObject(randomDecoration, tableGrid, tableObject.transform, true);
+
+        }
+
+        
+
+    }
 
 
 

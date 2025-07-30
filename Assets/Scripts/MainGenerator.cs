@@ -15,12 +15,13 @@ public class MainGenerator : MonoBehaviour
     void Start()
     {
 
-        //SeededRandom rng = new SeededRandom(seed);
+        //
         position = new(x,y,z);
         /**/
         for (int i = 1; i < 6; i++)
         {
-            GenerateOneRoom(widthTest, heightTest,0 ,position, new SeededRandom(seed));
+            SeededRandom rng = new SeededRandom(seed);
+            GenerateOneRoom(widthTest, heightTest,0 ,position, rng);
             position = new(x+15*i,y,z);
     
         }

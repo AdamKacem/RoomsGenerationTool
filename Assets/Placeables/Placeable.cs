@@ -17,7 +17,7 @@ public class Placeable : ScriptableObject
 
     public Vector3 offset; //offset in placement (place the pivot directly in the center of the cell? a little above ? a little to the right ?...)
 
-
+    
 
     //rules for procedural generation
 
@@ -60,7 +60,7 @@ public class Placeable : ScriptableObject
         }
     }
 
-    //to prohibit the placement of the same type within the radius
+    //to prohibit the placement of the same type within a certain radius
     public void MarkRadiusCells(RoomGrid grid, Vector2Int origin)
     {
         for (int dx = -radiusForSameObject; dx <= radiusForSameObject; dx++)

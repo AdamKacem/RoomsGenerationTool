@@ -42,7 +42,7 @@ public class WallDecorator : MonoBehaviour
             wallsGrid.DecorateWall(randomWallPlaceable, transform, -1, true);
         
         }
-        wallsGrid.LogFreeSlots();
+       // wallsGrid.LogFreeSlots();
 
     }
 

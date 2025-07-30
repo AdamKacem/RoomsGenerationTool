@@ -12,7 +12,7 @@ public class RoomGenerator : MonoBehaviour
 
     
    
-    public void Init(float width, float height, int openWall, SeededRandom rng)
+    public void Init(int width, int height, int openWall, SeededRandom rng)
     {
         room = new RoomGrid(width, height,1f,transform.position);
         

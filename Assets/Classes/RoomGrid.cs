@@ -5,24 +5,24 @@ public class RoomGrid
     public int gridWidth, gridHeight;
     public float cellSize;
     public Vector3 origin;
-    private bool[,] occupiedCell;
-    private List<Vector2Int> freeCells;
+    protected bool[,] occupiedCell;
+    protected List<Vector2Int> freeCells;
     public Dictionary<string, HashSet<Vector2Int>> freeCellsByType = new();
     //in the future make this better: (instead of setting types manually make them generate themselves from the placeables in use)
 
 
 
-    public RoomGrid(float houseWidth, float houseHeight, float cellSize, Vector3 center)
+    public RoomGrid(int gridWidth, int gridHeight, float cellSize, Vector3 center)
     {
 
         this.cellSize = cellSize;
 
-        gridWidth = Mathf.FloorToInt(houseWidth / cellSize);
-        gridHeight = Mathf.FloorToInt(houseHeight / cellSize);
+        this.gridWidth = gridWidth;
+        this.gridHeight = gridHeight;
 
         origin = center - new Vector3(gridWidth / 2f, 0, gridHeight / 2f);
 
-
+        //free cells for all type of objects
         InitFreeCells();
        
 
@@ -30,7 +30,9 @@ public class RoomGrid
     }
 
 
-    void InitFreeCells()
+  
+
+    public void InitFreeCells()
     {
         freeCells = new List<Vector2Int>();
         for (int x = 0; x < gridWidth; x++)
@@ -43,16 +45,21 @@ public class RoomGrid
     }
 
     public void InitCellsForType(Placeable placeable) 
-    {  
-        freeCellsByType[placeable.type] = new HashSet<Vector2Int>(freeCells);
-        
-        //remove corners if necessary
-        if (placeable.keepAwayFromCorners)
-        {
-            //Debug.Log("Removed Corners for: "+placeable.type);
-            //remove corners
+    {
 
+        if (!freeCellsByType.ContainsKey(placeable.type))
+        {
+            freeCellsByType[placeable.type] = new HashSet<Vector2Int>(freeCells);
+            //remove corners if necessary
+            if (placeable.keepAwayFromCorners)
+            {
+                //Debug.Log("Removed Corners for: "+placeable.type);
+                //remove corners
+
+            }
         }
+
+        
 
         
         
@@ -74,12 +81,12 @@ public class RoomGrid
     }
 
     public Vector3 GetWorldPosition(int x, int z)
-    {
+    { 
     
 
         return new Vector3(
             origin.x + x * cellSize + (cellSize / 2) ,
-            0,
+            origin.y,
             origin.z + z * cellSize + (cellSize / 2) 
         );
     }

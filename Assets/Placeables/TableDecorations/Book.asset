@@ -10,21 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b9e611306700bbc43b1487c6aba7f21e, type: 3}
-  m_Name: TableChair
+  m_Name: Book
   m_EditorClassIdentifier: 
-  prefab: {fileID: 5612977446245086202, guid: 92e7667a99576944fbb765daeab2d849, type: 3}
+  prefab: {fileID: 4957231571477918332, guid: 92d4430c1aabefa4691079bac409cbf9, type: 3}
   shape:
-  - {x: 0, y: 0}
   - {x: 0, y: 1}
+  - {x: 0, y: 2}
   - {x: 1, y: 0}
   - {x: 1, y: 1}
-  - {x: 0, y: -1}
-  - {x: -1, y: 0}
-  - {x: -1, y: -1}
-  - {x: -1, y: 1}
-  - {x: 1, y: -1}
-  type: TableChair
-  canRotate: 0
-  offset: {x: 0, y: 0, z: 0}
-  radiusForSameObject: 0
+  - {x: 1, y: 2}
+  - {x: 2, y: 0}
+  - {x: 2, y: 1}
+  - {x: 2, y: 2}
+  type: Book
+  canRotate: 1
+  offset: {x: 1, y: 0, z: 1}
+  radiusForSameObject: 5
   keepAwayFromCorners: 0

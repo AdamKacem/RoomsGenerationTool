@@ -80,7 +80,7 @@ public class WallsGrid
         int slot = freeWallSlots[wallNumber][randomIndex];
 
         if (!IsFreeSpace(wallNumber, slot, padding)) {
-            if(wallNumber==0) Debug.Log("Not enough space on wall 0 for slot: "+slot);
+            
             return -1;
                 }
 
@@ -89,7 +89,7 @@ public class WallsGrid
         {
             OccupySlot(wallNumber, slot+i);
         }
-        if(padding==4)Debug.Log("Placed big banner at slot: "+slot);
+        
         return slot;
     }
 

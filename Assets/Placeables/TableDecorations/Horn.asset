@@ -10,21 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b9e611306700bbc43b1487c6aba7f21e, type: 3}
-  m_Name: TableChair
+  m_Name: Horn
   m_EditorClassIdentifier: 
-  prefab: {fileID: 5612977446245086202, guid: 92e7667a99576944fbb765daeab2d849, type: 3}
+  prefab: {fileID: 2060941722523015148, guid: fa010434c7d21fe49900567be9f32b92, type: 3}
   shape:
-  - {x: 0, y: 0}
   - {x: 0, y: 1}
+  - {x: 0, y: 2}
   - {x: 1, y: 0}
   - {x: 1, y: 1}
-  - {x: 0, y: -1}
-  - {x: -1, y: 0}
-  - {x: -1, y: -1}
-  - {x: -1, y: 1}
-  - {x: 1, y: -1}
-  type: TableChair
-  canRotate: 0
+  - {x: 1, y: 2}
+  - {x: 2, y: 0}
+  - {x: 2, y: 1}
+  - {x: 2, y: 2}
+  type: Horn
+  canRotate: 1
   offset: {x: 0, y: 0, z: 0}
   radiusForSameObject: 0
   keepAwayFromCorners: 0
