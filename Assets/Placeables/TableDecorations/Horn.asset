@@ -22,8 +22,9 @@ MonoBehaviour:
   - {x: 2, y: 0}
   - {x: 2, y: 1}
   - {x: 2, y: 2}
+  - {x: 0, y: 0}
   type: Horn
   canRotate: 1
-  offset: {x: 0, y: 0, z: 0}
+  offset: {x: 1, y: 0, z: 1}
   radiusForSameObject: 0
   keepAwayFromCorners: 0

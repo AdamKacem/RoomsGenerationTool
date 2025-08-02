@@ -97,7 +97,7 @@ public class RoomGrid
     {
         if (freeCellsByType[placeable.type].Count == 0)
         {
-            Debug.Log("No free cells left!");
+            //Debug.Log("No free cells left!");
             return new Vector2Int(-1,-1);
         }
             

@@ -77,13 +77,14 @@ public class objectsPlacer : MonoBehaviour
 
             if (placeable.CanPlaceAt(room, coords, placeable.shape))
             {
-                Debug.Log($"Placing {placeable.type} at {coords}");
+                
                 
                 placeable.MarkShapeCells(room, coords, placeable.shape);//mark grid occupation for all the other objects
                 placeable.MarkRadiusCells(room, coords);//make the grid occupation and radius for objects with same type
 
                 Vector3 position = room.GetWorldPosition(x, z);
-                
+                position.y += placeable.yOffset;
+
                 float randomAngle = 0;
                 if (placeable.canRotate) { 
                 
@@ -113,7 +114,7 @@ public class objectsPlacer : MonoBehaviour
                 //Instantiate(obj, position + placeable.offset, Quaternion.identity, newObj);
 
                 //random rotation
-                Debug.Log(placeable.canRotate ? $"Rotating at degree: {randomAngle}" : $"Can't rotate this object");
+                
                 newObj.transform.Rotate(0, randomAngle, 0);
 
                 
@@ -148,7 +149,7 @@ public class objectsPlacer : MonoBehaviour
        TableGrid tableGrid = new TableGrid(12,7,0.15f, tableObject.transform.position);
         tableGrid.ResetOrigin(tableObject.transform.position + new Vector3(-0.89f,0.89f,1f));
         
-        Debug.Log(tableGrid.gridHeight+" : "+tableGrid.gridWidth);
+       
 
 
         for (int i = 0; i < 4; i++)

@@ -44,6 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e955b75a83324e249a506b75dd1ab091, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cellSize: 0
+  gridWidth: 0
+  gridHeight: 0
+  Origin: {fileID: 0}
 --- !u!1 &1568557307497805788
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,6 +156,51 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7f8cd8a200d6ea5439765e8e0acabb06, type: 2}
   - {fileID: 11400000, guid: de10d8235163bc54d8abd1bedff8248e, type: 2}
   torch: {fileID: 11400000, guid: 8b4bd2f0f80cf0f40911c225773ce6f6, type: 2}
+--- !u!1 &2957364617143842552
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1095751489752324382}
+  - component: {fileID: 1767434568253429197}
+  m_Layer: 0
+  m_Name: FloorPlacer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1095751489752324382
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2957364617143842552}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -8.293576, y: -7.7800765, z: -4.44}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1057845170809539977}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1767434568253429197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2957364617143842552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b6f2debb64470a4d82bba1a5253308d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floorTile: {fileID: 2021926822154840307, guid: 0d780173c250d334f80c9061373c8e4f, type: 3}
 --- !u!1 &6854774550201470103
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,6 +280,7 @@ Transform:
   - {fileID: 2072968280026978050}
   - {fileID: 3201972631175098788}
   - {fileID: 5020631660739544293}
+  - {fileID: 1095751489752324382}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1735410962413089856
@@ -249,6 +299,7 @@ MonoBehaviour:
   wallPlacer: {fileID: 3527992220243234069}
   wallDecorator: {fileID: 1603961749563463538}
   gridDrawer: {fileID: 8922468440424284956}
+  floorPlacer: {fileID: 1767434568253429197}
 --- !u!1 &8705586349508154637
 GameObject:
   m_ObjectHideFlags: 0

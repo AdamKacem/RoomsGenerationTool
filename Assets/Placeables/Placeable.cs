@@ -17,7 +17,8 @@ public class Placeable : ScriptableObject
 
     public Vector3 offset; //offset in placement (place the pivot directly in the center of the cell? a little above ? a little to the right ?...)
 
-    
+
+    public float yOffset;
 
     //rules for procedural generation
 

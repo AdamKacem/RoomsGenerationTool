@@ -8,6 +8,7 @@ public class RoomGenerator : MonoBehaviour
     public wallPlacer wallPlacer;
     public WallDecorator wallDecorator;
     public gridDrawer gridDrawer;
+    public FloorPlacer floorPlacer;
     RoomGrid room;
 
     
@@ -19,11 +20,13 @@ public class RoomGenerator : MonoBehaviour
         //static
         wallPlacer.Init(room, openWall);
         gridDrawer.Init(room);
+        floorPlacer.Init(room);
 
         //need randomness
         objectsPlacer.Init(room, rng);
         wallDecorator.Init(room, rng);
         
+
         
 
     }
@@ -33,6 +36,7 @@ public class RoomGenerator : MonoBehaviour
         wallPlacer.PlaceWalls();
         objectsPlacer.PlaceObjects();
         wallDecorator.DecorateWalls();
+        floorPlacer.PlaceFloor();
         
     }
 }
