@@ -24,7 +24,8 @@ MonoBehaviour:
   - {x: -1, y: 1}
   - {x: 1, y: -1}
   type: TableChair
-  canRotate: 0
+  canRotate: 1
   offset: {x: 0, y: 0, z: 0}
+  yOffset: 0
   radiusForSameObject: 0
   keepAwayFromCorners: 0

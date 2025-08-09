@@ -10,31 +10,41 @@ public class MainGenerator : MonoBehaviour
 
     private Vector3 position;
 
-   
+    public int minSize;
 
     void Start()
     {
 
-        //
-        position = new(x,y,z);
         /*
+        position = new(x,y,z);
+        
         for (int i = 1; i < 6; i++)
         {
             SeededRandom rng = new SeededRandom(seed);
             GenerateOneRoom(widthTest, heightTest,0 ,position, rng);
             position = new(x+15*i,y,z);
     
-        }*/
+        }
 
-        GenerateOneRoom(widthTest,heightTest,0,position);
+        GenerateOneRoom(widthTest,heightTest,0,position);*/
 
+
+        RectInt area = new RectInt(0,0,widthTest,heightTest);
+
+        SeededRandom rng = new SeededRandom(seed);
+
+        BSPNode root = new BSPNode(area);
+
+        root.Split(minSize, rng);
+
+        root.CreateRooms(this, rng);
         
     }
 
     //with seed
-    void GenerateOneRoom(int width, int height, int openWall, Vector3 position, SeededRandom rng)
+    public void GenerateOneRoom(int width, int height, int openWall, Vector3 position, SeededRandom rng)
     {
-        //Debug.Log("Created a room with pre-specified seed.");
+       
         GameObject newRoom = Instantiate(roomGeneratorObject, position, Quaternion.identity);
         RoomGenerator roomGenerator = newRoom.GetComponent<RoomGenerator>();
         //initialize roomGenerator
@@ -46,7 +56,7 @@ public class MainGenerator : MonoBehaviour
 
 
     //without seed
-    void GenerateOneRoom(int width, int height, int openWall, Vector3 position)
+    public void GenerateOneRoom(int width, int height, int openWall, Vector3 position)
     {
         int seed = Random.Range(0, 500);
         SeededRandom rng = new SeededRandom(seed);
