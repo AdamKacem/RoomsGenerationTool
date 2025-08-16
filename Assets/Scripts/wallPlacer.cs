@@ -4,19 +4,21 @@ public class wallPlacer : MonoBehaviour
 {
   
     public GameObject wall;
-   
-    
+
+    public GameObject doorWall;
+
     public RoomGrid room;
     public GameObject wall25, wall5, wall75;
 
-    public int openWall;
-
+    int WALLWIDTH = 4;
+    
+    Vector2Int openWall; //(side , position)
    
 
 
+   
 
-
-    public void Init(RoomGrid room, int openWall)
+    public void Init(RoomGrid room, Vector2Int openWall)
     {
         this.room = room;
         
@@ -27,11 +29,12 @@ public class wallPlacer : MonoBehaviour
 
     public void PlaceWalls()
     {
+
+        int side = openWall.x;
+        int wallPiece = openWall.y;
         
 
-        
-
-        //Add logic of openWall (a wall with a door)
+       
 
 
         Vector3 origin = room.origin;
@@ -49,15 +52,24 @@ public class wallPlacer : MonoBehaviour
         Vector3 zTranslator = new Vector3(0,0, room.gridHeight + 2);
         Vector3 xTranslator = new Vector3(room.gridWidth + 2,0, 0);
 
-        for (int i = 0; i < ((room.gridWidth+2)/4); i++)
-        {
+        for (int i = 0; i < ((room.gridWidth+2)/WALLWIDTH); i++)
+        {   if (side == 3 || side == 2)
+                if (wallPiece == i )
+                {
+                    
+                        Instantiate((side == 2 ? doorWall : wall), widthPos, Quaternion.identity, transform);
+                    Instantiate((side == 3 ? doorWall : wall), widthPos + zTranslator, rotation180, transform);
+                    widthPos += new Vector3(WALLWIDTH, 0, 0);
+                    continue;
+                }
+            
             Instantiate(wall, widthPos, Quaternion.identity ,transform);
             Instantiate(wall, widthPos + zTranslator, rotation180, transform);
-            widthPos += new Vector3(4, 0, 0);
+            widthPos += new Vector3(WALLWIDTH, 0, 0);
     
         }
 
-        int widthMod = (room.gridWidth + 2) % 4;
+        int widthMod = (room.gridWidth + 2) % WALLWIDTH;
         
         switch (widthMod)
         {
@@ -79,17 +91,25 @@ public class wallPlacer : MonoBehaviour
 
 
 
-        for (int i = 0; i < ((room.gridHeight+2)/4); i++)
+        for (int i = 0; i < ((room.gridHeight+2)/WALLWIDTH); i++)
         {
-            
+            if (side == 0 || side == 1)
+                if (wallPiece == i ) {
+                    
+                    Instantiate((side == 0 ? doorWall : wall), heightPos, rotation90, transform);
+                    Instantiate((side == 1 ? doorWall : wall), heightPos + xTranslator, rotationM90, transform);
+
+                    heightPos += new Vector3(0, 0, WALLWIDTH);
+                    continue; }
+
             Instantiate(wall, heightPos, rotation90, transform);
             Instantiate(wall, heightPos+xTranslator, rotationM90, transform);
            
-            heightPos += new Vector3(0, 0, 4);
+            heightPos += new Vector3(0, 0, WALLWIDTH);
            
         }
 
-        int heightMod = (room.gridHeight + 2) % 4;
+        int heightMod = (room.gridHeight + 2) % WALLWIDTH;
         switch (heightMod)
         {
             case 0:

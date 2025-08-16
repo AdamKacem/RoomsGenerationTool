@@ -73,7 +73,7 @@ public class objectsPlacer : MonoBehaviour
             int x = coords.x;
             int z = coords.y;
             if(x==-1)return false;
-
+            
 
             if (placeable.CanPlaceAt(room, coords, placeable.shape))
             {
@@ -90,16 +90,16 @@ public class objectsPlacer : MonoBehaviour
                 
                     if (decoratingTable)
                     {
-                        randomAngle = rng.Range(0.1f, 3.9f) * 90f;
+                        randomAngle = rng.Range(0.1f, 3.9f) * 90f; //objects on the table take a full random rotation
                     }
                     else
                     {
-                        randomAngle = rng.Range(0, 4) * 90f;
+                        randomAngle = rng.Range(0, 4) * 90f; // floor objects take a random 90 * k rotation
                     }
                 } 
 
                 var newObj = Instantiate(obj, position + placeable.offset*room.cellSize, Quaternion.identity, parent);
-
+                
                 //if the placeable is a TableChair, we decorate it randomly before rotating it
 
                 if (placeable.type == "TableChair")
@@ -147,7 +147,7 @@ public class objectsPlacer : MonoBehaviour
     {
         //initialize a tableGrid with a fixed origin 
        TableGrid tableGrid = new TableGrid(12,7,0.15f, tableObject.transform.position);
-        tableGrid.ResetOrigin(tableObject.transform.position + new Vector3(-0.89f,0.89f,1f));
+        tableGrid.ResetOrigin(tableObject.transform.position + new Vector3(-0.89f,0.89f,-0.21f));
         
        
 

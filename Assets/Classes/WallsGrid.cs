@@ -10,15 +10,18 @@ public class WallsGrid
     
     private Dictionary<int, List<int>> freeWallSlots;
 
-
+    int WALLWIDTH = 4;
 
     RoomGrid room;
     private SeededRandom rng;
 
-    public WallsGrid(RoomGrid room, SeededRandom rng)
+    public Vector2Int openWall;
+
+    public WallsGrid(RoomGrid room, Vector2Int openWall ,SeededRandom rng)
     {
         this.room = room;
         this.rng = rng;
+        this.openWall = openWall;
         freeWallSlots = new Dictionary<int, List<int>>();
         int limit;
         for (int wallNum = 0; wallNum < 4; wallNum++)
@@ -39,14 +42,38 @@ public class WallsGrid
 
         
 
-        
+        RemoveOpenWall(openWall); //occupy the slots of the open wall with a door (shouldn't be decorated)
 
         
     }
 
+    public void RemoveOpenWall(Vector2Int openWall)
+    {
+        int side = openWall.x; //which side has the open wall
+        int wall = openWall.y; //which wall is open (first, second ..)
+
+        int dimension = ( ((side == 0) || (side == 1)) ? room.gridHeight : room.gridWidth) +2;
+
+        Debug.Log(openWall);
+
+        Debug.Log($"Dimension: {dimension}, removable walls: {dimension / WALLWIDTH}, wall to remove: {wall}");
+
+        if ( (dimension / WALLWIDTH - 1) < wall) //because wall starts from 0
+        {
+            Debug.Log("Can't remove this wall from freeDecoratingSlots");
+            return;
+        }
+
+        int firstSlot = WALLWIDTH * wall - 1;
+
+        for (int slot = firstSlot; slot < firstSlot + WALLWIDTH; slot++)
+        {
+            freeWallSlots[side].Remove(slot);
+        }
 
 
-
+        LogFreeSlots();
+    }
     public void LogFreeSlots()
     {
         if (freeWallSlots == null || freeWallSlots.Count == 0)
@@ -59,7 +86,7 @@ public class WallsGrid
         foreach (var wall in freeWallSlots)
         {
             string slots = string.Join(", ", wall.Value);
-            Debug.Log($"Wall {wall.Key} ({(wall.Key % 2 == 0 ? "Vertical" : "Horizontal")}): [{slots}]");
+            Debug.Log($"Side {wall.Key}: [{slots}]");
         }
         Debug.Log("=======================");
     }

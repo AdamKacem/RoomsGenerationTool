@@ -456,13 +456,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomGeneratorObject: {fileID: 7029338252694705824, guid: 9af4a6fba5b485f4dace0bd14f786956, type: 3}
-  x: 10
+  x: 0
   y: 0
-  z: 10
-  seed: 147
-  widthTest: 40
-  heightTest: 40
-  minSize: 7
+  z: 0
+  seed: 148
+  widthTest: 14
+  heightTest: 11
+  minSize: 12
+  allowBigRooms: 0
+  openWall: {x: 3, y: 2}
 --- !u!4 &1716735486
 Transform:
   m_ObjectHideFlags: 0

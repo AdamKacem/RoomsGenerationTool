@@ -13,7 +13,7 @@ public class RoomGenerator : MonoBehaviour
 
     
    
-    public void Init(int width, int height, int openWall, SeededRandom rng)
+    public void Init(int width, int height, Vector2Int openWall, SeededRandom rng)
     {
         room = new RoomGrid(width, height,1f,transform.position);
         
@@ -24,7 +24,7 @@ public class RoomGenerator : MonoBehaviour
 
         //need randomness
         objectsPlacer.Init(room, rng);
-        wallDecorator.Init(room, rng);
+        wallDecorator.Init(room, openWall, rng);
         
 
         

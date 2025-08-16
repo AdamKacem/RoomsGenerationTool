@@ -21,6 +21,7 @@ public class RoomGrid
         this.gridHeight = gridHeight;
 
         origin = center - new Vector3(gridWidth / 2f, 0, gridHeight / 2f);
+        
 
         //free cells for all type of objects
         InitFreeCells();

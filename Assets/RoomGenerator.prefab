@@ -169,7 +169,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6352963364109265251
 Transform:
   m_ObjectHideFlags: 0
@@ -223,7 +223,7 @@ Transform:
   m_GameObject: {fileID: 7029338252694705824}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -296,7 +296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wall: {fileID: 7779381877309823848, guid: 2f6c4572e07a60b43b00e1c4f489a806, type: 3}
+  doorWall: {fileID: 2694970229597861189, guid: 8dce6cd2fb4e0334cb2ce30144b48d56, type: 3}
   wall25: {fileID: 5413404963415038210, guid: 28e02a7ebae78d74c9d02e7ab6cada3b, type: 3}
   wall5: {fileID: 4827148807295930782, guid: e8471b2f01d7e084ab4fdb8d488ed049, type: 3}
   wall75: {fileID: 739678263756247340, guid: 5045041e282ca3343a0b0ade1dea67be, type: 3}
-  openWall: 0

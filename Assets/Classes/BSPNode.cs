@@ -18,7 +18,7 @@ public class BSPNode
 
 
 
-    public void Split(int minSize, SeededRandom rng)
+    public void Split(int minSize, bool allowBigRooms, SeededRandom rng)
     {
         if (!isLeaf) return; //only try to split those that don't have have children
         
@@ -27,14 +27,27 @@ public class BSPNode
         if (splitH && area.height < minSize * 2) return;
         if (!splitH && area.width < minSize * 2) return;
 */
-        Debug.Log($"Splitting on {(splitH ? "H" : "V")} ");
+        
 
         int max = (splitH ? area.height : area.width) - minSize; //choose the maximum position that the split line can take
-        if (max <= minSize) return; //splitting not possible
+        if (allowBigRooms) { if (max <= minSize) return; }
+        
+        else {
+            if (max <= minSize)
+            {
+
+                splitH = !splitH;
+                max = (splitH ? area.height : area.width) - minSize; //try again in the other direction
+
+
+                if (max <= minSize) return; //splitting not possible
+            }
+        }
+
 
 
         int split = rng.Range(minSize, max); //split line position (integer)
-        Debug.Log("Split line on: "+split);
+        
         
         /**/
         if (splitH) //choose left and right children (ken horizontal fou9 wlouta si nn isar w imin)
@@ -57,13 +70,13 @@ public class BSPNode
 
         }
 
-        left.Split(minSize, rng);
-        right.Split(minSize, rng);
+        left.Split(minSize, allowBigRooms , rng);
+        right.Split(minSize, allowBigRooms ,rng);
 
 
     }
     
-    public void Split(int minSize)
+    public void Split(int minSize, bool allowBigRooms)
     {
         if (!isLeaf) return; //only try to split those that don't have have children
 
@@ -72,14 +85,28 @@ public class BSPNode
 
         bool splitH = rng.Range(0.0f, 1.0f) > 0.5f; //split Horizontally ?
        
-        Debug.Log($"Splitting on {(splitH ? "H" : "V")} ");
+       
 
         int max = (splitH ? area.height : area.width) - minSize; //choose the maximum position that the split line can take
-        if (max <= minSize) return; //splitting not possible
+        
+        if (allowBigRooms) { if (max <= minSize) return; }
+
+        else
+        {
+            if (max <= minSize)
+            {
+
+                splitH = !splitH;
+                max = (splitH ? area.height : area.width) - minSize; //try again in the other direction
+
+
+                if (max <= minSize) return; //splitting not possible
+            }
+        }
 
 
         int split = rng.Range(minSize, max); //split line position (integer)
-        Debug.Log("Split line on: "+split);
+        
         
         /**/
         if (splitH) //choose left and right children (ken horizontal fou9 wlouta si nn isar w imin)
@@ -102,8 +129,8 @@ public class BSPNode
 
         }
 
-        left.Split(minSize, rng);
-        right.Split(minSize, rng);
+        left.Split(minSize, allowBigRooms, rng);
+        right.Split(minSize, allowBigRooms, rng);
 
 
     }
@@ -112,11 +139,11 @@ public class BSPNode
     {
         if (isLeaf)
         {
-            int x = area.x + area.width/2;
-            int z = area.y + area.height/2;
+            float x = area.x + area.width/2f;
+            float z = area.y + area.height/2f;
 
             //generate One room at each leaf
-            generator.GenerateOneRoom(area.width-2, area.height-2,0,new Vector3(x,0,z));
+            //------------------------------------------------------generator.GenerateOneRoom(area.width-2, area.height-2,0,new Vector3(x,0,z));
 
         }
         else
@@ -131,17 +158,17 @@ public class BSPNode
     {
         if (isLeaf)
         {
-            int x = area.x + area.width/2;
-            int z = area.y + area.height/2;
+            float x = area.x + area.width/2f;
+            float z = area.y + area.height/2f;
 
             //generate One room at each leaf
-            generator.GenerateOneRoom(area.width-2, area.height-2,0,new Vector3(x,0,z), rng);
+            //-----------------------------------------------generator.GenerateOneRoom(area.width-2, area.height-2,0,new Vector3(x,0,z), rng);
 
         }
         else
         {
-            left.CreateRooms(generator);
-            right.CreateRooms(generator);
+            left.CreateRooms(generator, rng);
+            right.CreateRooms(generator, rng);
         }
        
     }

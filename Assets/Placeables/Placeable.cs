@@ -54,6 +54,7 @@ public class Placeable : ScriptableObject
     //mark cells around the placeable depending on the shape it takes
     public void MarkShapeCells(RoomGrid grid, Vector2Int origin, List<Vector2Int> shape)
     {
+        
         foreach (var offset in shape)
         {
             Vector2Int cell = origin + offset;
