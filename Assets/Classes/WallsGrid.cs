@@ -17,11 +17,23 @@ public class WallsGrid
 
     public Vector2Int openWall;
 
-    public WallsGrid(RoomGrid room, Vector2Int openWall ,SeededRandom rng)
+    
+    public int openBottom;
+    public int openLeft;
+        public int openRight;
+    public int openTop;
+
+    public WallsGrid(RoomGrid room, int openTop, int openBottom, int openRight, int openLeft, SeededRandom rng)
     {
         this.room = room;
         this.rng = rng;
-        this.openWall = openWall;
+
+
+        this.openBottom = openBottom;
+        this.openLeft = openLeft;
+        this.openRight = openRight;
+        this.openTop = openTop;
+
         freeWallSlots = new Dictionary<int, List<int>>();
         int limit;
         for (int wallNum = 0; wallNum < 4; wallNum++)
@@ -42,10 +54,44 @@ public class WallsGrid
 
         
 
-        RemoveOpenWall(openWall); //occupy the slots of the open wall with a door (shouldn't be decorated)
+        RemoveOpenWalls(); //occupy the slots of the open wall with a door (shouldn't be decorated)
 
-        
+        //LogFreeSlots();
     }
+
+    
+
+    public void RemoveOpenWalls()
+    {
+        for (int wallNum = 0; wallNum < 4; wallNum++)
+        {
+            switch (wallNum)
+            {
+                case 0:
+                    RemoveOpenWall(new Vector2Int(0,openLeft));
+                    break;
+                case 1:
+                    RemoveOpenWall(new Vector2Int(1,openRight));
+                    break;
+                case 2:
+                    RemoveOpenWall(new Vector2Int(2,openBottom));
+                    break;
+                case 3:
+                    RemoveOpenWall(new Vector2Int(3, openTop));
+                    break;
+
+
+                default:
+
+                    break;
+
+            }
+            
+        }
+
+    }
+
+
 
     public void RemoveOpenWall(Vector2Int openWall)
     {
@@ -54,12 +100,13 @@ public class WallsGrid
 
         int dimension = ( ((side == 0) || (side == 1)) ? room.gridHeight : room.gridWidth) +2;
 
-        Debug.Log(openWall);
+        //Debug.Log(openWall);
 
-        Debug.Log($"Dimension: {dimension}, removable walls: {dimension / WALLWIDTH}, wall to remove: {wall}");
+        
 
         if ( (dimension / WALLWIDTH - 1) < wall) //because wall starts from 0
         {
+            Debug.Log($"Dimension: {dimension}, removable walls: from 0 to  {(dimension / WALLWIDTH) - 1}, wall to remove: {wall}");
             Debug.Log("Can't remove this wall from freeDecoratingSlots");
             return;
         }
@@ -72,7 +119,7 @@ public class WallsGrid
         }
 
 
-        LogFreeSlots();
+        
     }
     public void LogFreeSlots()
     {

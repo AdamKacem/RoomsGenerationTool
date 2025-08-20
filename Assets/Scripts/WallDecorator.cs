@@ -15,14 +15,16 @@ public class WallDecorator : MonoBehaviour
     WallPlaceable randomWallPlaceable;
     WallsGrid wallsGrid;
 
-     Vector2Int openWall;
-
-    public void Init(RoomGrid room, Vector2Int openwall , SeededRandom rng)
+   
+    public void Init(RoomGrid room, int openTop, int openBottom, int openRight, int openLeft, SeededRandom rng)
     {
         this.room = room;
         this.rng = rng;
-        this.openWall = openwall;
-        wallsGrid = new WallsGrid(room, openWall ,rng);
+
+
+
+
+        wallsGrid = new WallsGrid(room, openTop, openBottom, openRight, openLeft, rng);
         
     }
 

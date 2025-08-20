@@ -13,18 +13,18 @@ public class RoomGenerator : MonoBehaviour
 
     
    
-    public void Init(int width, int height, Vector2Int openWall, SeededRandom rng)
+    public void Init(int width, int height, int openTop,int openBot,int openRight,int openLeft, SeededRandom rng)
     {
         room = new RoomGrid(width, height,1f,transform.position);
         
         //static
-        wallPlacer.Init(room, openWall);
+        wallPlacer.Init(room, openTop, openBot, openRight, openLeft);
         gridDrawer.Init(room);
         floorPlacer.Init(room);
 
         //need randomness
         objectsPlacer.Init(room, rng);
-        wallDecorator.Init(room, openWall, rng);
+        wallDecorator.Init(room, openTop, openBot, openRight, openLeft, rng);
         
 
         

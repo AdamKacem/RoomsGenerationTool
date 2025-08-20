@@ -12,26 +12,33 @@ public class wallPlacer : MonoBehaviour
 
     int WALLWIDTH = 4;
     
-    Vector2Int openWall; //(side , position)
    
 
+    int openTop;
+    int openBottom;
+    int openLeft;
+    int openRight;
 
-   
 
-    public void Init(RoomGrid room, Vector2Int openWall)
+
+    public void Init(RoomGrid room, int openTop, int openBottom, int openRight, int openLeft)
     {
         this.room = room;
-        
-        this.openWall = openWall;
-        
+
+        this.openBottom = openBottom;
+        this.openLeft = openLeft;
+        this.openRight = openRight;
+        this.openTop = openTop;
+
     }
+
+    
 
 
     public void PlaceWalls()
     {
 
-        int side = openWall.x;
-        int wallPiece = openWall.y;
+        
         
 
        
@@ -51,22 +58,42 @@ public class wallPlacer : MonoBehaviour
 
         Vector3 zTranslator = new Vector3(0,0, room.gridHeight + 2);
         Vector3 xTranslator = new Vector3(room.gridWidth + 2,0, 0);
-
+        //top side
         for (int i = 0; i < ((room.gridWidth+2)/WALLWIDTH); i++)
-        {   if (side == 3 || side == 2)
-                if (wallPiece == i )
+        {   
+                if (openTop == i )
                 {
                     
-                        Instantiate((side == 2 ? doorWall : wall), widthPos, Quaternion.identity, transform);
-                    Instantiate((side == 3 ? doorWall : wall), widthPos + zTranslator, rotation180, transform);
+                        
+                    Instantiate(doorWall , widthPos + zTranslator, rotation180, transform);
                     widthPos += new Vector3(WALLWIDTH, 0, 0);
                     continue;
                 }
             
-            Instantiate(wall, widthPos, Quaternion.identity ,transform);
+           
             Instantiate(wall, widthPos + zTranslator, rotation180, transform);
             widthPos += new Vector3(WALLWIDTH, 0, 0);
     
+        }
+        widthPos = new(1f, 0, -1f);
+        widthPos += origin;
+        //bottom side
+        for (int i = 0; i < ((room.gridWidth + 2) / WALLWIDTH); i++)
+        {
+            
+                if (openBottom == i)
+                {
+
+                    Instantiate(doorWall , widthPos, Quaternion.identity, transform);
+                   
+                    widthPos += new Vector3(WALLWIDTH, 0, 0);
+                    continue;
+                }
+
+            Instantiate(wall, widthPos, Quaternion.identity, transform);
+            
+            widthPos += new Vector3(WALLWIDTH, 0, 0);
+
         }
 
         int widthMod = (room.gridWidth + 2) % WALLWIDTH;
@@ -90,24 +117,52 @@ public class wallPlacer : MonoBehaviour
         }
 
 
-
+        //left side
         for (int i = 0; i < ((room.gridHeight+2)/WALLWIDTH); i++)
         {
-            if (side == 0 || side == 1)
-                if (wallPiece == i ) {
+            
+                if (openLeft == i ) {
                     
-                    Instantiate((side == 0 ? doorWall : wall), heightPos, rotation90, transform);
-                    Instantiate((side == 1 ? doorWall : wall), heightPos + xTranslator, rotationM90, transform);
+                    Instantiate(doorWall , heightPos, rotation90, transform);
+                    
 
                     heightPos += new Vector3(0, 0, WALLWIDTH);
                     continue; }
 
+
             Instantiate(wall, heightPos, rotation90, transform);
+
+            heightPos += new Vector3(0, 0, WALLWIDTH);
+           
+        }
+        heightPos = new(-1f, 0, 1f);
+        heightPos += origin;
+        //right side
+        for (int i = 0; i < ((room.gridHeight+2)/WALLWIDTH); i++)
+        {
+            
+                if (openRight == i ) {
+                    
+                    
+                    Instantiate(doorWall, heightPos + xTranslator, rotationM90, transform);
+
+                    heightPos += new Vector3(0, 0, WALLWIDTH);
+                    continue; }
+
+            
             Instantiate(wall, heightPos+xTranslator, rotationM90, transform);
            
             heightPos += new Vector3(0, 0, WALLWIDTH);
            
         }
+
+
+
+
+
+
+
+
 
         int heightMod = (room.gridHeight + 2) % WALLWIDTH;
         switch (heightMod)

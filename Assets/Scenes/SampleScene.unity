@@ -460,10 +460,14 @@ MonoBehaviour:
   y: 0
   z: 0
   seed: 148
-  widthTest: 14
-  heightTest: 11
-  minSize: 12
+  widthTest: 40
+  heightTest: 40
+  minSize: 3
   allowBigRooms: 0
+  openTop: -1
+  openBottom: 1
+  openLeft: 2
+  openRight: 1
   openWall: {x: 3, y: 2}
 --- !u!4 &1716735486
 Transform:
