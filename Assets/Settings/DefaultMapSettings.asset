@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9082d32aa0954035a77a89893dc63d5c, type: 3}
+  m_Name: DefaultMapSettings
+  m_EditorClassIdentifier: 
+  roomPrefab: {fileID: 7029338252694705824, guid: 9af4a6fba5b485f4dace0bd14f786956, type: 3}
+  mapWidth: 40
+  mapDepth: 44
+  minRoomSide: 2
+  allowBigRooms: 0

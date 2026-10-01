@@ -1,0 +1,23 @@
+{
+  "name": "com.adamkacem.roomsgeneration",
+  "version": "1.0.0",
+  "displayName": "Rooms Generation Tool",
+  "description": "Procedural room-and-door map generator for Unity using Binary Space Partitioning (BSP). Splits an area into connected rooms, then builds walls, doors, floors, furniture and wall decorations from your own prefabs. Seeded, so the same seed always gives the same map. Generates in the editor or at runtime.",
+  "unity": "2022.3",
+  "author": {
+    "name": "Adam Kacem",
+    "url": "https://github.com/AdamKacem"
+  },
+  "license": "MIT",
+  "keywords": ["procedural", "generation", "bsp", "dungeon", "rooms", "level", "map"],
+  "documentationUrl": "https://github.com/AdamKacem/RoomsGenerationTool#readme",
+  "changelogUrl": "https://github.com/AdamKacem/RoomsGenerationTool/blob/main/Packages/com.adamkacem.roomsgeneration/CHANGELOG.md",
+  "licensesUrl": "https://github.com/AdamKacem/RoomsGenerationTool/blob/main/Packages/com.adamkacem.roomsgeneration/LICENSE.md",
+  "samples": [
+    {
+      "displayName": "Placeholder Demo",
+      "description": "Grey-box walls, doors, floor and props made from cubes, a ready-made room prefab, a settings preset, a Map Generator prefab and an example script that uses the room data.",
+      "path": "Samples~/PlaceholderDemo"
+    }
+  ]
+}

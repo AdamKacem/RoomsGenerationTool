@@ -97,3 +97,28 @@ InitTestScene*.unity*
 
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+
+# ------------------------------------------------------------------
+# Asset Store packs used by the demo project.
+# Their license doesn't allow sharing the files, so they stay local.
+# See "Demo project and credits" in README.md to download them.
+/[Aa]ssets/BrokenVector/
+/[Aa]ssets/BrokenVector.meta
+/[Aa]ssets/LowPolyDungeonsLite/
+/[Aa]ssets/LowPolyDungeonsLite.meta
+/[Aa]ssets/WT_Props/
+/[Aa]ssets/WT_Props.meta
+/[Aa]ssets/RNMahajan/
+/[Aa]ssets/RNMahajan.meta
+/[Aa]ssets/Animated PBR Chest Demo/
+/[Aa]ssets/Animated PBR Chest Demo.meta
+/[Aa]ssets/TwoHandedSwordFREE/
+/[Aa]ssets/TwoHandedSwordFREE.meta
+# Wall models cut from the pack's walls (still the pack's meshes)
+/[Aa]ssets/cutted walls.fbx
+/[Aa]ssets/cutted walls.fbx.meta
+/[Aa]ssets/Cropped walls 0.75 and 0.5 w.fbx
+/[Aa]ssets/Cropped walls 0.75 and 0.5 w.fbx.meta
+
+# Local backups of old scripts (kept on this PC only)
+/[Bb]ackups/
