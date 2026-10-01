@@ -38,11 +38,11 @@ Made with Unity 6 (6000.0). It should work on Unity 2022.3 and newer.
 2. Drag **Map Generator (Placeholder Demo)** from `Assets/Samples/Rooms Generation Tool/.../PlaceholderDemo` into your scene.
 3. Select it and click **Generate** in the Inspector. Click **New Seed + Generate** to get a new layout.
 
-![Generator Inspector](Docs/images/inspector.png)
+![Generator Inspector](Docs/images/inspector.jpg)
 
 ### What you get out of the box
 
-![Grey-box map from the Placeholder Demo](Docs/images/greybox.png)
+![Grey-box map from the Placeholder Demo](Docs/images/greybox.jpg)
 
 This is the **Placeholder Demo**: plain grey blocks, so the tool works right after you install it. The layout, doors and furniture placement are the same as in the GIF above, only the art is different. To get a real look, either:
 
