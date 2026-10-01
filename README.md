@@ -40,6 +40,15 @@ Made with Unity 6 (6000.0). It should work on Unity 2022.3 and newer.
 
 ![Generator Inspector](Docs/images/inspector.png)
 
+### What you get out of the box
+
+![Grey-box map from the Placeholder Demo](Docs/images/greybox.png)
+
+This is the **Placeholder Demo**: plain grey blocks, so the tool works right after you install it. The layout, doors and furniture placement are the same as in the GIF above, only the art is different. To get a real look, either:
+
+- **use any art you like:** swap in your own walls, floor and props (see [Using your own assets](#using-your-own-assets)), or
+- **get the look from the GIF:** download the free packs listed in [Demo project and credits](#demo-project-and-credits) and assign their prefabs.
+
 To start from scratch instead: **GameObject > Rooms Generation > Map Generator**, then create a preset with **right-click in the Project window > Create > Rooms Generation > Map Settings** and drag it into the generator's **Settings** slot.
 
 ## Settings
